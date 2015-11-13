@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll Website</title>
+    <description>This is how the site looked like when I finished reading Jekyll documentation</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Jekyll ➷ ASOS</title>
+        <description>&lt;p&gt;I could take a little Erlang or Scheme program and put on a show, publicly tearing it to pieces,
+analyzing the inefficiencies from dynamic typing and immutability and virtual machines. There
+would be foot stomping and cheering and everyone would leave convinced that we&amp;#39;ve been fooling
+ourselves and that the only way to write code is to frame problems in terms of cache
+architectures.&lt;/p&gt;
+
+&lt;p&gt;And then I&amp;#39;d reveal that the massively inefficient Erlang program takes only a couple of
+milliseconds to run.&lt;/p&gt;
+
+&lt;p&gt;The brief description of the page showing on all major search engineers will would (hopefully)
+be &amp;#39;Jekyll demo for ASOS on Campus&amp;#39;.&lt;/p&gt;
+
+&lt;h2&gt;Liqued Templating Filters&lt;/h2&gt;
+
+&lt;p&gt;Hello ALL UPPERCASE TEXT&lt;/p&gt;
+
+&lt;p&gt;Hello &lt;em&gt;tobi&lt;/em&gt; has 4 letters!&lt;/p&gt;
+
+&lt;p&gt;Hello &lt;em&gt;TOBI&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello 2015 Nov&lt;/p&gt;
+
+&lt;h2&gt;Comments&lt;/h2&gt;
+
+&lt;p&gt;We made 1 million dollars  this year.&lt;/p&gt;
+
+&lt;h2&gt;Raw&lt;/h2&gt;
+
+&lt;p&gt;In Handlebars, {{ this }} will be HTML-escaped, but {{{ that }}} will not.&lt;/p&gt;
+
+&lt;h2&gt;If / Else&lt;/h2&gt;
+
+&lt;p&gt;Hello Toby! You are working on ASOS on Campus.&lt;/p&gt;
+
+&lt;h2&gt;Syntax Highlighting&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;acdOnCampusHub&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;ko&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ko&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Utils&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;viewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;viewModel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ajax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;feedUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;dataType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;json&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;oParameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;Utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Utils&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2&gt;Data&lt;/h2&gt;
+
+&lt;h3&gt;YAML format&lt;/h3&gt;
+
+&lt;ul class=&quot;data-example&quot;&gt;
+
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/mojombo&quot;&gt;
+      Tom Preston-Werner
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/parkr&quot;&gt;
+      Parker Moore
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+  &lt;li&gt;
+    &lt;a href=&quot;https://github.com/liufengyun&quot;&gt;
+      Liu Fengyun
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h3&gt;JSON format&lt;/h3&gt;
+
+&lt;h4&gt;Team members&lt;/h4&gt;
+
+&lt;ul class=&quot;data-example&quot;&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;https://github.com/elfoak&quot;&gt;
+      Joe Dow
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;https://github.com/arjunbhalla&quot;&gt;
+      Joe Bloggs
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h4&gt;Projects&lt;/h4&gt;
+
+&lt;ul class=&quot;data-example&quot;&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;
+        ASOS on Campus (Anna G)
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;
+        Made in Chelsea (Juliet B)
+    &lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;h3&gt;Data organisation&lt;/h3&gt;
+
+&lt;ul&gt;
+
+    
+    &lt;li&gt;
+        &lt;a href=&quot;https://github.com/doeorg&quot;&gt;Doe Org&lt;/a&gt;
+        (1 members)
+    &lt;/li&gt;
+
+    
+    &lt;li&gt;
+        &lt;a href=&quot;https://github.com/jekyll&quot;&gt;Jekyll&lt;/a&gt;
+        (2 members)
+    &lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;//push url to history
+var title = this.textContent;&lt;/p&gt;
+
+&lt;p&gt;var pathArray = this.href.split( &amp;#39;/&amp;#39; );
+pathArray[2] = window.location.hostname;
+var url = pathArray.join(&amp;quot;/&amp;quot;);&lt;/p&gt;
+
+&lt;p&gt;history.pushState(&amp;#39;&amp;#39;, &amp;#39;&amp;#39;, url);&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/elfoak/aa48b8fb767145d25992.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Gist 2:&lt;/p&gt;
+
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;// js/collections/todos.js&lt;/p&gt;
+
+&lt;p&gt;var app = app || {};&lt;/p&gt;
+
+&lt;p&gt;// Todo Collection
+// ---------------&lt;/p&gt;
+
+&lt;p&gt;// The collection of todos is backed by &lt;em&gt;localStorage&lt;/em&gt; instead of a remote server&lt;/p&gt;
+
+&lt;p&gt;var TodoList = Backbone.Collection.extend({&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;// Reference to this collection&amp;amp;#39;s model
+model: app.Todo,
+
+// Save all of the todo items under the &amp;amp;#39;todos-backbone&amp;amp;#39; namespace
+localStorage: new Backbone.LocalStorage(&amp;amp;#39;todos-backbone&amp;amp;#39;),
+
+
+// Filter down the list of all todo items that are finished
+completed: function() {
+    return this.filter(function(todo) {
+        return todo.get(&amp;amp;#39;completed&amp;amp;#39;);
+    });
+},
+
+// Filter down the list to only todo items that are still not finished
+remaining: function() {
+    return this.without.apply(this, this.completed());
+},
+
+// We keep the Todos in sequential order, despite being saved by unordered
+// GUID in the database, This generates the next order number for new item.
+nextOrder: function() {
+    if (!this.length) {
+        return 1;
+    }
+    return this.last().get(&amp;amp;#39;order&amp;amp;#39;) + 1;
+},
+
+// Todos are sortd by their original insertion order
+comparator: function(todo) {
+    return todo.get(&amp;amp;#39;order&amp;amp;#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;});&lt;/p&gt;
+
+&lt;p&gt;// Create our global collection of &lt;strong&gt;Todos&lt;/strong&gt;
+app.Todos = new TodoList();
+&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/elfoak/94bda234b8f8be0b18c3.js?file=app.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+
+&lt;h2&gt;Links to other posts&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/adonis/52814&quot;&gt;I am an internal link. Oh adonis!&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Pictures&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/jekyll.jpg&quot; alt=&quot;I am an image. My name is Jekyll&quot;&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 26 Mar 2015 15:27:00 +0000</pubDate>
+        <link>/jekyll-and-asos/32615</link>
+        <guid isPermaLink="true">/jekyll-and-asos/32615</guid>
+      </item>
+    
+      <item>
+        <title>Node.js web app on  Windows Azure</title>
+        <description>&lt;p&gt;You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;/adonis/52814&quot;&gt;Node.js web app on  Windows Azure&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 May 2014 12:03:45 +0100</pubDate>
+        <link>/adonis/52814</link>
+        <guid isPermaLink="true">/adonis/52814</guid>
+      </item>
+    
+      <item>
+        <title>Configure vsftpd on Windows Azure Ubuntu VM</title>
+        <description>&lt;p&gt;You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 May 2014 12:03:45 +0100</pubDate>
+        <link>/configure-vsftpd-on-windows-azure-ubuntu-image/52814</link>
+        <guid isPermaLink="true">/configure-vsftpd-on-windows-azure-ubuntu-image/52814</guid>
+      </item>
+    
+  </channel>
+</rss>
