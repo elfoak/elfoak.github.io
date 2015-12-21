@@ -1,10 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jekyll Website</title>
+    <title>Liwen Zhang</title>
     <description>This is how the site looked like when I finished reading Jekyll documentation</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Keyboard Love, Emacs Way</title>
+        <description>&lt;p&gt;Computer-literatured folks usually put keyboard, mouse, scanner and other substitute peripheral devices into one
+category: input devices - tools to feed data into the computer. While keyboard is long been recognised as standard input
+device, mouse and other peripherals are often considered as computer ergonomics to make operating a computer easier.&lt;/p&gt;
+
+&lt;p&gt;With more than 2000 build-in commands, plus countless key bindings in different modes, Emacs&amp;#39;s true power can only be
+released by madly typing long keyboard commands - or &lt;q&gt;keys&lt;/q&gt; in Emacs terms. E.g., &lt;kbd&gt;C-u C-u TAB&lt;/kbd&gt; to reset
+the outline view in org-mode. Any input peripherals, including mouse, will only slow a true Emacs power user down.&lt;/p&gt;
+
+&lt;blockquote cite=&quot;http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#User-Input&quot;&gt;
+  &lt;p&gt;
+    GNU Emacs is primarily designed for use with the keyboard. While it is
+    possible to use the mouse to issue editing commands through the menu bar and
+    tool bar, that is not as efficient as using the keyboard.
+  &lt;/p&gt;
+  &lt;footer&gt;
+    &lt;cite&gt;&lt;a href=&quot;http://www.gnu.org/software/emacs/manual/html_mono/emacs.html#User-Input&quot;&gt;GNU Emacs Manual&lt;/a&gt;
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;To be productive, one needs to know his tools and get the best that money can buy. Unfortunately there are not many
+keyboards on the market which are designed particularly with Emacs in mind. To understand what is a good Emacs keyboard,
+we need to understand a bit of history about Emacs and the old good &lt;a href=&quot;http://en.wikipedia.org/wiki/Lisp_machine&quot;&gt;Lisp machines&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Emacs key bindings, shortcuts you may call them, were designed specifically for the &lt;a href=&quot;http://en.wikipedia.org/wiki/File:Space-cadet.jpg&quot;&gt;space-cadet keyboard&lt;/a&gt; which is
+commonly used for Lisp machines in the 80s. In those keyboards, Ctrl key is the main modifier key and Meta is right
+after it as the secondary modifier. In today&amp;#39;s IMB PC keyboard, the Meta key has been replace by Alt and the Ctrl key is
+placed in the corner far away out of thumb&amp;#39;s reach. Strange enough, in spite of the fact that IBM has changed the
+keyboard layout and made Ctrl one of the most costly key to press, almost all the software designs have followed the
+tradition of using Ctrl key as the main modifier key along with the HCI guidance published by IMB itself and Apple.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;//media.liwen.name/images/space-cadet-keyboard.jpg&quot; alt=&quot;img&quot; title=&quot;Space Cadet Keyboard&quot;&gt;
+(&lt;a href=&quot;http://www.asl.dsl.pipex.com/symbolics/photos/IO/index.html&quot;&gt;Source ❐&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Fast forward to 2012, most people are likely to acess more than one computers in day to day life, with variety of
+operating systems, physical characteristics (laptop, desktop, tablet&amp;#x2026;) and of course, different keyboard
+layouts. Among all these variables, the positioning of Ctrl key tend to vary the most. This is killing Emacs users like
+me.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://c2.com/cgi/wiki?RemapCapsLock&quot;&gt;Remap Caps Lock Key&lt;/a&gt; is a popular solution to the ever change Ctrl key positioning. It is partly based on the fact that
+traditional UNIX keyboards typically had the control key where the Caps Lock key is now. This is not without caveat that
+it may decrease efficiency if you like to use both Ctrl keys. On the positive side, the position of Caps Lock key seems
+to be very consistent across all keyboards.&lt;/p&gt;
+
+&lt;p&gt;Remap Caps Lock key solves the problem of Ctrl key, but what about the Meta (alt) key? It tends to be shoved into
+strange places by manufactures in favour of their useless function keys. The solution - nothing beats a good keyboard
+itself in terms of Emacs efficiency.&lt;/p&gt;
+
+&lt;h2&gt;Good Keyboard, Bad Keyboard&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;//media.liwen.name/images/Microsoft-natural-ergonomic-4000-keyboard.jpg&quot; alt=&quot;img&quot; title=&quot;Microsoft Natural Ergonomic 4000 keyboard&quot;&gt;
+(&lt;a href=&quot;http://www.microsoft.com/hardware/mouseandkeyboard/productdetails.aspx?pid=043&quot;&gt;Source ❐&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;This is without doubt one of the best accessible keyboards you can get as a programmer. It has split keys oriented for
+each hands, very large modifier keys. Most importantly, they are symmetrically positioned on each side, which is the
+perfect design for people use modifier keys a lot. If that doesn&amp;#39;t satisfy you, you can even re-map the modifier keys
+with the IntelliType software which comes with the keyboard. For example, you can swap Ctrl and Alt keys to make the
+keyboard function exactly same as original Symbolics Keyboards.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, Mac keyboard is the worst in terms of &lt;del&gt;Ctrl key positioning&lt;/del&gt; everything. It is
+understandable that Apple put the ⌘ key in the prominent position where Ctrl would be in Symbolics keyboards - Ctrl is
+only the tertiary modifier in OS anyway. However, the quality of this beautiful keyboard is pouring. Sticky, sluggish,
+almost has no reflex-action and extremely mushy, even the key stroke noise is unbelievably annoying. It is definitely
+one of the worst membrane keyboards out there. I can only wish Apple bring the old good &lt;a href=&quot;http://en.wikipedia.org/wiki/Apple_Extended_Keyboard&quot;&gt;Apple Extended Keyboard&lt;/a&gt; back.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;//media.liwen.name/images/mac-os-keyboard.jpg&quot; alt=&quot;img&quot; title=&quot;Mac Keyboard&quot;&gt;
+(&lt;a href=&quot;http://www.apple.com/uk/keyboard/&quot;&gt;Source ❐&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;While most consumer keyboards use &lt;a href=&quot;http://en.wikipedia.org/wiki/Membrane_switch&quot;&gt;membrane switches&lt;/a&gt;, it&amp;#39;s gleeful to see a few quality &lt;a href=&quot;http://en.wikipedia.org/wiki/Keyboard_technology#Mechanical-switch_keyboard&quot;&gt;mechanical-switch&lt;/a&gt; keyboards out
+there on the market, most of them are elite gaming keyboards with flashy back-lit lights. Back to our Emacs world, we
+have some less known but especially designed for geeks keyboards, plain, simple but incredible powerful, just as our
+dear pal Emacs. The top one on my list is the wonderful wonderful wicked &lt;a href=&quot;http://www.pfu.co.jp/hhkeyboard/hhkbpro2&quot;&gt;Happy Hacking Keyboard Professional 2&lt;/a&gt;. It cost
+almost £300 for a S-Type (quieter version, mechanical switches are VERY load). It is designed for people who know what a
+good keyboard should be.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;//media.liwen.name/images/happy-hecker-keyboard-2.jpg&quot; alt=&quot;img&quot; title=&quot;Happy Hacking Keyboard Professional 2&quot;&gt;
+(&lt;a href=&quot;http://www.pfu.co.jp/hhkeyboard/hhkbpro2&quot;&gt;Source ❐&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;There you go, we have the very pleasing Microsoft Natural Ergonomic 4000 keyboard, the extremely bad new shining Apple
+wireless keyboard which you should avoid at all costs. If you take typing seriously, it is definitely worth considering
+investigating on a Happy Hacking Keyboard Professional2.&lt;/p&gt;
+
+&lt;p&gt;Searching for the perfect Emacs keyboard continues.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 29 Jun 2007 00:00:00 +0100</pubDate>
+        <link>/keyboard-love-emacs-way/62907</link>
+        <guid isPermaLink="true">/keyboard-love-emacs-way/62907</guid>
+      </item>
     
       <item>
         <title>Jekyll ➷ ASOS</title>
@@ -28,7 +118,7 @@ be &amp;#39;Jekyll demo for ASOS on Campus&amp;#39;.&lt;/p&gt;
 
 &lt;p&gt;Hello &lt;em&gt;TOBI&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Hello 2015 Nov&lt;/p&gt;
+&lt;p&gt;Hello 2015 Dec&lt;/p&gt;
 
 &lt;h2&gt;Comments&lt;/h2&gt;
 
@@ -229,60 +319,13 @@ app.Todos = new TodoList();
 
 &lt;h2&gt;Links to other posts&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;/adonis/52814&quot;&gt;I am an internal link. Oh adonis!&lt;/a&gt;&lt;/p&gt;
-
 &lt;h2&gt;Pictures&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/media/jekyll.jpg&quot; alt=&quot;I am an image. My name is Jekyll&quot;&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 26 Mar 2015 15:27:00 +0000</pubDate>
-        <link>/jekyll-and-asos/32615</link>
-        <guid isPermaLink="true">/jekyll-and-asos/32615</guid>
-      </item>
-    
-      <item>
-        <title>Node.js web app on  Windows Azure</title>
-        <description>&lt;p&gt;You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;a href=&quot;/adonis/52814&quot;&gt;Node.js web app on  Windows Azure&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 28 May 2014 12:03:45 +0100</pubDate>
-        <link>/adonis/52814</link>
-        <guid isPermaLink="true">/adonis/52814</guid>
-      </item>
-    
-      <item>
-        <title>Configure vsftpd on Windows Azure Ubuntu VM</title>
-        <description>&lt;p&gt;You&amp;#39;ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&amp;#39;s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 28 May 2014 12:03:45 +0100</pubDate>
-        <link>/configure-vsftpd-on-windows-azure-ubuntu-image/52814</link>
-        <guid isPermaLink="true">/configure-vsftpd-on-windows-azure-ubuntu-image/52814</guid>
+        <pubDate>Sat, 26 Mar 2005 15:27:00 +0000</pubDate>
+        <link>/jekyll-and-asos/32605</link>
+        <guid isPermaLink="true">/jekyll-and-asos/32605</guid>
       </item>
     
   </channel>
