@@ -100,13 +100,13 @@ gpg --version
 ```
 
 You should see something similar to this: ![GnuPG
-version](http://media.liwen.name/images/articles/2012/08/gnupg_version.png)
+version](http://media.liwen.name/images/lz-20120822-gnupg_version.png)
 
 To create a new primary keypair:
 ```shell
 gpg --gen-key
 ```
-![GnuPG Screenshot](http://media.liwen.name/images/articles/2012/08/gnupg_key-gen.png)
+![GnuPG Screenshot](http://media.liwen.name/images/lz-20120822-gnupg_key-gen.png)
 
 Here the `DSA` is the primary keypair type which can only be used to make
 signatures. `Elgamal` subordinate keypair is the one for message encryption. In
@@ -251,7 +251,7 @@ To decrypt a message use `--decrypt`:
 gpg --output secret.jpg --decrypt secret.jpg.gpg
 ```
 
-![GnuPG](http://media.liwen.name/images/articles/2012/08/gnupg-decrypt.png)
+![GnuPG](http://media.liwen.name/images/lz-20120822-gnupg-decrypt.png)
 You will be prompted to enter the password for your private key.
 
 ## What's next?

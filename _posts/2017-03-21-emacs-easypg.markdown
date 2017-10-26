@@ -51,7 +51,7 @@ and then you can forget about it.
 ### Online logins
 [Org-mode](http://orgmode.org/) is unbeatable for organising notes and simple
 tabular data in plain text files. ![Org-mode
-Table](http://media.liwen.name/images/articles/2015/12/org-password-table.png)
+Table](http://media.liwen.name/images/lz-20170321-org-password-table.png)
 
 Saving the file as `passwords.org.gpg`, you will be asked to either set up a
 password for the file or select the recepient's public key for encryption -
@@ -61,7 +61,7 @@ anyone else?
 
 Try to open the file with Emacs, you will be asked to type in the password:
 ![Emacs
-EasyPG](http://media.liwen.name/images/articles/2015/12/org-password-table-open.png)
+EasyPG](http://media.liwen.name/images/lz-20170321-org-password-table-open.png)
 
 *Tips:* make sure you choose a strong password ONLY for encrypting the password
 list, and don't use it anywhere else. If you prefer public-key encryption, use
@@ -73,16 +73,16 @@ the rest of the document with others. E.g. sharing your notes on how to setup a
 computer but not the license keys of applications.
 
 Imagine you need to share the below project plan with a colleague. ![Org-mode
-Note](http://media.liwen.name/images/articles/2015/12/easyPG-usage-01.png)
+Note](http://media.liwen.name/images/lz-20170321-easyPG-usage-01.png)
 
 You probably don't want to share the serial numbers and the credit card
 details. Select the regions you don't want to share and issue `M-x
 epa-encrypt-region`, type your password, you would end up with a file like this:
 ![EasyPG encrypted
-region](http://media.liwen.name/images/articles/2015/12/easyPG-usage-02.png)
+region](http://media.liwen.name/images/lz-20170321-easyPG-usage-02.png)
 
 Toggle the outline mode, it still looks nice and clean.  ![EasyPG encrypted
-region](http://media.liwen.name/images/articles/2015/12/easyPG-usage-03.png)
+region](http://media.liwen.name/images/lz-20170321-easyPG-usage-03.png)
 
 It's always a good practice to encrypt sensitive info even you are the only one
 who will ever read it, otherwise it can easily lead to embarrassment, identity
