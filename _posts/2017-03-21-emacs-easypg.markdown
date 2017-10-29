@@ -23,7 +23,7 @@ with by EasyPG automatically. You can customise this behaviour by modifying the
 
 GnuPG is GNU's implementation of
 [OpenPGP](http://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP) standard. In
-the post [File encryption with
+the post [Data encryption with
 GnuPG](/tools/2012/08/22/data-encryption-with-gnupg.html), I covered how to use
 GnuPG in detail. Make sure to check it out if you are not familiar with GnuPG.
 
@@ -40,10 +40,10 @@ with added security, instead just save file with `C-x C-s`, you can use
 `epa-file-select-key` to get a list of keys in your system and select the
 recipient's public key for encryption.
 
-## Real world usuage examples
+## Real world usage examples
 Sensitive information such as usernames and passwords for online logins,
-software licence keys and financial figures, should be kept secrect. They should
-be stored with a disaster recovery storage strategty in case of data corruption
+software licence keys and financial figures should be kept secret. They should
+be stored with a disaster recovery storage strategy in case of data corruption
 or hardware failure. One accessible method would be putting them in a plain text
 file, encrypting the file and then throwing it in Dropbox or a git repository,
 and then you can forget about it.
@@ -54,7 +54,7 @@ tabular data in plain text files. ![Org-mode
 Table](http://media.liwen.name/images/lz-20170321-org-password-table.png)
 
 Saving the file as `passwords.org.gpg`, you will be asked to either set up a
-password for the file or select the recepient's public key for encryption -
+password for the file or select the recipient's public key for encryption -
 depending on your EasyPG settings. In this use case you are the sole 'recipient'
 of the encrypted message - why would you want to share all your passwords with
 anyone else?
@@ -91,14 +91,14 @@ fraud or more devastating disasters if your computer is compromised.
 To decrypt the encrypted parts, just select the PGP messages and issue
 `M-x epa-decrypt-region`
 
-Having to type password in every time when you open a file can quickly get
+Having to type the password in every time when you open a file can quickly get
 tedious. Fortunately GnuPG provides an utility called `gpg-agent` which can
 cache passwords for a pre-defined period of time. EasyPG can remember your
-passphrases for symmetric encryption.
+password for symmetric encryption.
 
 Credentials caching can get complicated depending on which version of GnuPG you
 have in your system and the encryption methods your employ. It's best to consult
-relavent documentation for detailed instructions.
+relevant documentation for detailed instructions.
 
 ## *Update* <time>@ 2017-03-21</time>
 To use Emacs 25+ with GnuPG 2.1.x and above, set the below in your Emacs init file:
