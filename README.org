@@ -1,20 +1,19 @@
-* Liwen.name
+* Liwen's Personal Website
   Source code for http://liwen.name.
 
-** Development
-   The site is powered by [[https://jekyllrb.com/][Jekyll]].
+  The site is powered by [[https://jekyllrb.com/][Jekyll]].
 
-*** Build
-    #+BEGIN_SRC shell
-      bundle exec jekyll serve
-    #+END_SRC
+** Development with local Ruby installation
+   #+BEGIN_SRC shell
+     bundle install
+     bundle exec jekyll serve
+   #+END_SRC
 
 ** Development with Docker
-*** Build
-    #+BEGIN_SRC shell
-      # Replace x.x with the jekyll version number in your `Gemfile`
-      docker pull jekyll/jekyll:${version}
+   #+BEGIN_SRC shell
+     # Replace x.x with the jekyll version number in your `Gemfile`
+     docker pull jekyll/jekyll:${version}
 
-      export JEKYLL_VERSION=${version}
-      docker run --rm --volume=$PWD:/srv/jekyll -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
-    #+END_SRC
+     export JEKYLL_VERSION=${version}
+     docker run --rm --volume=$PWD:/srv/jekyll -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
+   #+END_SRC
