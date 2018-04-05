@@ -54,14 +54,8 @@ body {
 
 html {
   font-family: $main-font;
-  font-size: 16px;
+  font-size: $regular-font-size;
   line-height: 1.5;
-}
-
-@media (min-width: 38em) {
-  html {
-    font-size: $regular-font-size;
-  }
 }
 
 body {
