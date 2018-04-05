@@ -9,7 +9,7 @@ tags:
   - encryption
 ---
 
-<h2>Table of Contents</h2>
+<h3>Table of Contents</h3>
 * this unordered seed list will be replaced by toc as unordered list
 {:toc}
 

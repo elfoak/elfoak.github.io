@@ -100,7 +100,7 @@ Credentials caching can get complicated depending on which version of GnuPG you
 have in your system and the encryption methods your employ. It's best to consult
 relevant documentation for detailed instructions.
 
-## *Update* <time>@ 2017-03-21</time>
+#### *Update* <time>@ 2017-03-21</time>
 To use Emacs 25+ with GnuPG 2.1.x and above, set the below in your Emacs init file:
 ```elisp
 (setq epg-gpg-program "gpg2")
