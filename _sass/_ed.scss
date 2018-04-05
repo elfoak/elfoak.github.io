@@ -39,8 +39,8 @@ $link-color: #841212;
 
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -70,7 +70,7 @@ body {
 }
 
 .content {
-	margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 /*
@@ -266,7 +266,7 @@ tbody tr:nth-child(odd) th {
 
 .masthead {
 	margin-bottom: 3rem;
-	padding-top: 26px;
+	padding-top: 22px;
 	padding-bottom: 1rem;
   border-bottom: 1px solid #eee;
 }
@@ -293,30 +293,13 @@ h3.masthead-title {
 	font-family: $main-font;
 	font-size: 1.8rem;
 	text-align: left;
-	margin-top: 2px;
 }
 
 
-@media (max-width: 48em) {
+@media (max-width: 47em) {
   .masthead-title {
     text-align: center;
-  }
-
-  .masthead-title small {
-    display: none;
-  }
-
-  h3.masthead-title {
-  margin-left: 15%;
-  margin-right: 15%;
-  }
-}
-
-@media (max-width: 320px) {
-  h3.masthead-title {
-  margin-top: 2em;
-  margin-left: 0%;
-  margin-right: 0%;
+    margin-left: 42px;
   }
 }
 
@@ -451,7 +434,7 @@ a.sidebar-nav-item:focus {
 /* Style the `label` that we use to target the `.sidebar-checkbox` */
 .sidebar-toggle {
   position: absolute;
-  top:  .8rem;
+  top:  .9rem;
   left: 1rem;
   display: block;
   padding: .25rem .75rem;
