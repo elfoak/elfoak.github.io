@@ -1,19 +1,22 @@
+#+TITLE: Liwen.name
+#+SETUPFILE: ~/Dropbox/templates/org-mode/note.org
+
 * Liwen's Personal Website
   Source code for http://liwen.name.
 
   The site is powered by [[https://jekyllrb.com/][Jekyll]].
 
-** Development with local Ruby installation
+** Development with Docker
+   #+BEGIN_SRC shell
+     # Update the jekyll version number to match what is `Gemfile.lock`
+     export JEKYLL_VERSION="3.6.2"
+
+     docker pull jekyll/jekyll:${JEKYLL_VERSION}
+     docker run --rm --volume=$PWD:/srv/jekyll -p 35729:35729 -p 4000:4000 -it jekyll/builder:$JEKYLL_VERSION jekyll build
+   #+END_SRC
+
+** Development with local dev environment
    #+BEGIN_SRC shell
      bundle install
      bundle exec jekyll serve
-   #+END_SRC
-
-** Development with Docker
-   #+BEGIN_SRC shell
-     # Replace x.x with the jekyll version number in your `Gemfile`
-     docker pull jekyll/jekyll:${version}
-
-     export JEKYLL_VERSION=${version}
-     docker run --rm --volume=$PWD:/srv/jekyll -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
    #+END_SRC
