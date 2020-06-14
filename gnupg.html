@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- Jun 14, 2020 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data encryption with GnuPG</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Liwen Knight-Zhang" />
+<meta name="keywords" content="gpg, GnuPG, encryption, security, privacy post" />
+<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
+<link rel='manifest' href='/site.webmanifest'>
+<meta name='msapplication-TileColor' content='#da532c'>
+<meta name='theme-color' content='#ffffff'>
+
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Average+Sans&family=Goudy+Bookletter+1911&display=swap' rel='stylesheet' />
+<link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
+<link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="/"> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><header id="top" class="status">
+<div class='intro'>
+  <img src='/images/about/profile.png' alt='Liwen Knight-Zhang' class='no-border'/>
+  <h1>Liwen Knight-Zhang</h1>
+  <p>Emacser, Coder, Husband & Lifelong Learner</p>
+</div>
+
+<div class='nav'>
+  <ul>
+    <li><a href='/'><i class='icon-home-outline'></i> Home</a></li>
+    <li><a href='/about'><i class='icon-user'></i> About</a></li>
+    <!--<li><a href='http://github.com/lwkz'><i class='icon-github'></i> GitHub</a><li>-->
+    <li><a href='/index.xml'><i class='icon-rss-outline'></i> RSS</a><li>
+    <!--<li><a href='https://www.twitter.com'><i class='icon-twitter'></i> Twitter</a></li>-->
+  </ul>
+</div>
+</header>
+<main id="content">
+<header>
+<h1 class="title">Data encryption with GnuPG</h1>
+<p class="subtitle">Published on Aug 22, 2012</p>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org36cc049">Why I am paranoid about security?</a></li>
+<li><a href="#org915c443">Encrypt data with GnuPG</a>
+<ul>
+<li><a href="#org66a4e7e">Get the Tools Ready</a></li>
+<li><a href="#org76e88dd">Generate a Keypair</a></li>
+<li><a href="#orgabb4383">Generate a Revocation Certificate</a></li>
+<li><a href="#org0a5da32">Deploy &amp; backup keys</a></li>
+<li><a href="#org57bf1f5">Export public key</a></li>
+</ul>
+</li>
+<li><a href="#orgf4b8c34">Encrypt &amp; decrypt documents</a></li>
+<li><a href="#org110fa3c">What&rsquo;s next?</a></li>
+</ul>
+</div>
+</nav>
+
+
+<section id="outline-container-org36cc049" class="outline-2">
+<h2 id="org36cc049">Why I am paranoid about security?</h2>
+<div class="outline-text-2" id="text-org36cc049">
+<p>
+After working with hundreds of legacy websites during my early web
+development years, I’ve learnt not to trust any small e-commerce sites
+written in the last century, nor any website from which I can retrieve
+password in plain text. Even worse, now I start losing faith in the big boys
+who fail to guide their users lately: <a href="http://www.bbc.co.uk/news/business-13636704">Sony</a>, <a href="http://mashable.com/2012/05/08/twitter-hacked-accounts">Twitter</a>, <a href="http://blog.linkedin.com/2012/06/06/linkedin-member-passwords-compromised/">LinkedIn</a>, and <a href="http://mashable.com/2012/08/01/dropbox-hacked">Dropbox</a> to
+name a few, some of them have always vowed to treat security as top priority.
+</p>
+
+<p>
+It’s not only that that worries me, what about my personal notes stored in
+the cloud? Someone out there has access to them. Although <a href="http://www.nytimes.com/2012/07/02/technology/new-eu-guidelines-to-address-cloud-computing.html">cloud computing
+privacy is improving</a> it is nowhere near being regulated or enforced; actually
+it’s quite the <a href="http://topics.nytimes.com/top/reference/timestopics/subjects/u/usa_patriot_act/index.html">opposite</a>. Nevertheless, keeping data only on your physical
+devices sounds a terrible idea. Hard disks could die on you abruptly; thieves
+could break in and smash your computer and backups; fire could burn the whole
+city to the ground. The list can go on and on, putting data in the cloud at
+least makes our digital possessions immune to the hence mentioned devastating
+disasters.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org915c443" class="outline-2">
+<h2 id="org915c443">Encrypt data with GnuPG</h2>
+<div class="outline-text-2" id="text-org915c443">
+<p>
+From deliberately changing file extension to zipping sensitive info with
+password, rudimentary tricks can certainly provide some level of security
+against novice users. But for experienced techies, these obstacles can easily
+be lifted with a £500 laptop from Currys within a matter of minutes.
+</p>
+
+<p>
+To protect our privacy, We can use <a href="http://en.wikipedia.org/wiki/Public-key_cryptography">Public-key cryptography</a> to encrypt any
+file, both on our own hard drivers and in the cloud.
+</p>
+
+<blockquote>
+<p>
+A public and private key each have a specific role when encrypting and
+decrypting documents. A public key may be thought of as an open safe. When a
+correspondent encrypts a document using a public key, that document is put
+in the safe, the safe shut, and the combination lock spun several times. The
+corresponding private key is the combination that can reopen the safe and
+retrieve the document. In other words, only the person who holds the private
+key can recover a document encrypted using the associated public key.
+</p>
+
+<p>
+The procedure for encrypting and decrypting documents is straightforward
+with this mental model. If you want to encrypt a message to Alice, you
+encrypt it using Alice&rsquo;s public key, and she decrypts it with her private
+key. If Alice wants to send you a message, she encrypts it using your public
+key, and you decrypt it with your private key. &#x2014; <a href="http://www.gnupg.org/gph/en/manual.html#AEN111">The GNU Privacy Handbook</a>
+</p>
+</blockquote>
+
+<p>
+To protect our data in the cloud, we can encrypt our sensitive documents with
+our own public keys before uploading them. We can then decrypt these
+documents with our corresponding private keys which can be further protected
+by a strong password. To peep the encrypted files, someone will have to have
+both physical access to the private key and the correct password.
+</p>
+</div>
+
+<div id="outline-container-org66a4e7e" class="outline-3">
+<h3 id="org66a4e7e">Get the Tools Ready</h3>
+<div class="outline-text-3" id="text-org66a4e7e">
+<p>
+<a href="http://www.gnupg.org">The GNU Privacy Guard</a> (GnuPG) is a superb implementation of <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">OpenPGP</a>
+standard, which is historically from the famous <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">Pretty Good Privacy</a>
+(PGP). PGP can be used to sign, encrypt and decrypt documents, directories,
+and even entire hard disk partitions, as well as to authenticate emails with
+digital signatures.
+</p>
+
+<p>
+GnuPG supports a variety of encryption schemes, paired keys and digital
+sinatures.  It features a convenient key management system and access
+modules for public key directories.  It&rsquo;s a command line tool with features
+for easy integration with other applications such as Emacs package <a href="http://www.gnu.org/software/emacs/manual/html_mono/epa.html">EasyPG</a>.
+</p>
+
+<p>
+GnuPG has quite a few <a href="http://www.gnupg.org/related_software/frontends.en.html">frontends</a> (applications with graphic interfaces) for
+various operating systems. On Microsoft Windows OS you have <a href="http://www.gpg4win.org">Gpg4win</a>; on Mcs
+OS you have <a href="https://www.gpgtools.org">GPGTools</a> for best OS integration. If you are only after a slim
+command line tool with minimum footprints, or only want to integrate
+cryptographic options into your own workflow, GnuPG from <a href="http://mxcl.github.com/homebrew">Homebrew</a> should be
+more than adequate. Let&rsquo;s get started.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org76e88dd" class="outline-3">
+<h3 id="org76e88dd">Generate a Keypair</h3>
+<div class="outline-text-3" id="text-org76e88dd">
+<p>
+To verify GnuPG installation, issue the command
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --version
+</pre>
+</div>
+
+<p>
+You should see something similar to this: 
+</p>
+
+<figure>
+<img src="http://media.liwen.name/images/lz-20120822-gnupg_version.png" alt="lz-20120822-gnupg_version.png" class="center no-border" />
+
+</figure>
+
+<p>
+To create a new primary keypair:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --gen-key
+</pre>
+</div>
+
+
+<figure>
+<img src="http://media.liwen.name/images/lz-20120822-gnupg_key-gen.png" alt="lz-20120822-gnupg_key-gen.png" class="center no-border" />
+
+</figure>
+
+<p>
+Here the <code>DSA</code> is the primary keypair type which can only be used to make
+signatures. <code>Elgamal</code> subordinate keypair is the one for message
+encryption. In most cases the default option is the one you want.
+</p>
+
+<p>
+You will then be prompted to set the following attributes for the keypair:
+size of the key, expiration date, real name, comment and email address. The
+email address can be used as key specifier later. Some of the info cannot be
+edited once the keypair is created so type in carefully.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgabb4383" class="outline-3">
+<h3 id="orgabb4383">Generate a Revocation Certificate</h3>
+<div class="outline-text-3" id="text-orgabb4383">
+<p>
+If you forget your password or your private key is compromised, a revocation
+certificate can be used to revoke your public key so no one can use it to
+encrypt messages to you anymore. This may be vital to email communications but
+it does little with file encryption, as spooks can always decrypt encrypted
+files if they get hold of your private key and password.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output revoke.txt --gen-revoke key-specifier
+</pre>
+</div>
+
+<p>
+Here <code>key-specifier</code> can be any part of the User ID which identifies your
+keypair. E.g. the email address used to create the keypair would be a good
+choice.
+</p>
+
+<p>
+You should print out your revocation certificate, take a photo of it,
+disguise the photo and then upload it to a safe place. Of course don&rsquo;t
+forget to delete the <code>revoke.txt</code> file permanently from your computer!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0a5da32" class="outline-3">
+<h3 id="org0a5da32">Deploy &amp; backup keys</h3>
+<div class="outline-text-3" id="text-org0a5da32">
+<p>
+In order to be able to view the encrypted files on all your computers, the
+keypair needs to be deployed onto every machine. This also means you have
+multiple backups of your key across different computers. If you ever lose
+one of the computers, the encrypted data is still accessible.
+</p>
+</div>
+
+<div id="outline-container-org948c4ca" class="outline-4">
+<h4 id="org948c4ca">List all keypairs</h4>
+<div class="outline-text-4" id="text-org948c4ca">
+<p>
+To see all the keypairs in your operating system, issue the command
+below. It would list them all and the <code>uid</code> of each.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --list-keys
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57bf1f5" class="outline-3">
+<h3 id="org57bf1f5">Export public key</h3>
+<div class="outline-text-3" id="text-org57bf1f5">
+<p>
+Use the <code>--export</code> option to export the public key. The exported key
+file will be in binary format by default.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output public-key.pk --export key-identifier
+<span class="org-comment-delimiter"># </span><span class="org-comment">Use the email address you used to create the key as key-identifier</span>
+</pre>
+</div>
+
+<p>
+If you need to send the key though email or copy it to clipboard, add the
+<code>--armor</code> option to export it in plain ASCII text.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output public-key.txt --export --armor key-identifier
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6f7dc14" class="outline-4">
+<h4 id="org6f7dc14">Export private key</h4>
+<div class="outline-text-4" id="text-org6f7dc14">
+<p>
+Use the <code>--export-secret-key</code> option to export any private keys. As with public keys, use option
+<code>--armor</code> to export in plain text. Actually any output from GnuGP can be decorated with
+<code>--armor</code>. E.g. we can encrypt a binary file such as picture and get
+an encrypted plain ASCII text output. For more information, ask for help from our
+good old friend <code>man</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output private-key.pk --export-secret-key --armor key-identifier
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcad2683" class="outline-4">
+<h4 id="orgcad2683">Deploy keypair onto other computers</h4>
+<div class="outline-text-4" id="text-orgcad2683">
+<p>
+Copy the exported private key (binary or plain text) onto the destination
+computer; make sure the new machine has GunPG installed. To import a key,
+use the `&#x2013;import` option.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --import private-key.pk
+</pre>
+</div>
+
+<p>
+Issue command <code>gpg --list-keys</code> to confirm that the keypair has been
+successfully imported.
+</p>
+
+<p>
+The corresponding public key will be available on the new machine once its
+private key is imported. You can import someone&rsquo;s public key without
+knowing their private key.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org618c700" class="outline-4">
+<h4 id="org618c700">Verify the imported keys</h4>
+<div class="outline-text-4" id="text-org618c700">
+<p>
+All the imported public keys must be validated by verifying the keys&rsquo;
+fingerprints and then signing them. However if the corresponding private keys
+have also been imported then you only need to set the trust level.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --edit-key key-identifier
+</pre>
+</div>
+
+<p>
+The above command will list the details of the key and also put you into an
+interactive editing mode. Type in <code>trust</code> to set the trust level, if you
+truly trust yourself then set the trust level to <b>ultimate</b>. Issue <code>quit</code>
+to quit the interactive mode.
+</p>
+
+<p>
+Now everything is setup and you are ready to hide all your secrets!
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outline-container-orgf4b8c34" class="outline-2">
+<h2 id="orgf4b8c34">Encrypt &amp; decrypt documents</h2>
+<div class="outline-text-2" id="text-orgf4b8c34">
+<p>
+The <code>--encrypt</code> option can be used to encrypt a document.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output secret.jpg.gpg --encrypt  <span class="org-sh-escaped-newline">\</span>
+--recipient john@smith.com secret.jpg
+</pre>
+</div>
+
+<p>
+Here we encrypted <code>secret.jpg</code> with John&rsquo;s public key (assume
+<code>john@smith.com</code> is the associated email address for John&rsquo;s keypair). The
+output would be <code>secret.jpg.gpg</code> which can only be decrypted by John&rsquo;s
+private key. The added bonus is that if we need to communicate the file
+though email or other network protocols, we can use the previously mentined
+<code>--armor</code> option to output the file as <code>secret.jpg.txt</code> so our picture will
+look like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fundamental">-----BEGIN PGP MESSAGE----- Version:
+GnuPG v1.4.7
+
+hQIOAxdwc3QWykEfEAf9E9N87ZPXrOVGyo02ia3lRbuW9vLqvMKtjrAhlRXb7T1n
+ZwtXnR5sL7/i6eoza4IgoEwUWWL5Tj32qSRsVzTJYI0gvLyTIT21VjLCdwHiOwh/
+9+usSejFkH39nutPtZ4DV32hNjYWa9vlQaKD5um/jT+Ac18UlIR/d5/BO0CCMvf4
+H1H+qCgR8BrixE7It0xtRujv/AYRr+4QVThV2vB9xYlxwvDZVXM2kXrI17Y6l3PD
+R4bfXAOiQbTYgtgPvMcsZqCkBxDYARRUP8JkupGB5LNALbiaLoCwHjbdisShbmMO
+9fYdH4FgW5AgLViRZIM/E95W/FhmZBb0WHmOIFbDpwf+PCVAIg3ISgJbpQFwOMbQ
+LpilsUj4pGlUZ45Qm2pq/m1D4uQuETKhGqEP+C29+ndPKrs5/Wc5AhMfnS3mWiDy
+zxEyvaMiHeQB7C8SZ3WoEVOFO0fmVxd6X+7EG+PxJ0+SePV0c7WGfg8p2xuEEq7Y
+bdzJGccbisn+RDN5TlFVUgZ4tQ3//hMZDhurLRmgP3bFdAgmdPvJZnNv4BGC2sJV
+Zzt8tODrKlXqgrwVdSRsXw8trtW0cdiYBcHGCZ8OkM8Q6N2ClXDlY61sHV2KOuyL
+a57AnoEwLxnltvXT+KzYUruG5pp3JqeBcRoNkdm9zPmqjUeIuNJ4nb5gpsVA9QzG
+bXF3T14Te+KRC3UttP5NbdZ8H+Mq2vjo98FyKdpBSTr5Qs2HTybxZ4ZeZN6g6w4y
+11GTIzkOESr0zydnThyLDn7JMs6yhAy6A5Jv59MMLFlVuvTOY01aNrQPJpW6nZG+
+fbNbPkvzrEH3TK1Ehw==
+=1PP1
+-----END PGP MESSAGE-----
+</pre>
+</div>
+
+<p>
+To decrypt a message use <code>--decrypt</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">gpg --output secret.jpg --decrypt secret.jpg.gpg
+</pre>
+</div>
+
+
+<figure>
+<img src="http://media.liwen.name/images/lz-20120822-gnupg-decrypt.png" alt="lz-20120822-gnupg-decrypt.png" class="center no-border" /> 
+
+</figure>
+
+<p>
+You will be prompted to enter the password for your private key.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org110fa3c" class="outline-2">
+<h2 id="org110fa3c">What&rsquo;s next?</h2>
+<div class="outline-text-2" id="text-org110fa3c">
+<p>
+This open note focuses on the basic usage of GnuPG commands to give readers
+an insight of PGP encryption. In reality, if you are not a savvy shell user,
+it is not practical to encrypt/decrypt and manage a large amount of files in
+this way. Most <a href="http://www.gnupg.org/related_software/frontends.en.html">frontends</a> provide more user-friendly Graphic User Interface
+(GUI) as well as additional bells and whistles to simplify the
+encryption/decryption process.
+</p>
+</div>
+</section>
+</main>
+<footer id="postamble" class="status">
+<div class='footer'>
+    <p>Copyright © 2011-2020 Liwen Knight-Zhang</p>
+    <p>Last updated on Jun 12, 2020 using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.7) <i class='icon-emo-thumbsup'></i></p>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?60640201');
+  src: url('../font/fontello.eot?60640201#iefix') format('embedded-opentype'),
+  url('../font/fontello.woff2?60640201') format('woff2'),
+  url('../font/fontello.woff?60640201') format('woff'),
+  url('../font/fontello.ttf?60640201') format('truetype'),
+  url('../font/fontello.svg?60640201#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+   @media screen and (-webkit-min-device-pixel-ratio:0) {
+   @font-face {
+   font-family: 'fontello';
+   src: url('../font/fontello.svg?60640201#fontello') format('svg');
+   }
+   }
+ */
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-home-outline:before { content: '\e800'; } /* '' */
+.icon-rss-outline:before { content: '\e801'; } /* '' */
+.icon-user:before { content: '\e802'; } /* '' */
+.icon-twitter:before { content: '\e803'; } /* '' */
+.icon-emo-happy:before { content: '\e804'; } /* '' */
+.icon-emo-wink:before { content: '\e805'; } /* '' */
+.icon-emo-unhappy:before { content: '\e806'; } /* '' */
+.icon-emo-sleep:before { content: '\e807'; } /* '' */
+.icon-emo-thumbsup:before { content: '\e808'; } /* '' */
+.icon-emo-devil:before { content: '\e809'; } /* '' */
+.icon-emo-surprised:before { content: '\e80a'; } /* '' */
+.icon-emo-tongue:before { content: '\e80b'; } /* '' */
+.icon-emo-coffee:before { content: '\e80c'; } /* '' */
+.icon-emo-sunglasses:before { content: '\e80d'; } /* '' */
+.icon-emo-displeased:before { content: '\e80e'; } /* '' */
+.icon-emo-angry:before { content: '\e80f'; } /* '' */
+.icon-emo-grin:before { content: '\e810'; } /* '' */
+.icon-emo-saint:before { content: '\e811'; } /* '' */
+.icon-emo-cry:before { content: '\e812'; } /* '' */
+.icon-emo-wink2:before { content: '\e813'; } /* '' */
+.icon-emo-shoot:before { content: '\e814'; } /* '' */
+.icon-emo-squint:before { content: '\e815'; } /* '' */
+.icon-emo-laugh:before { content: '\e816'; } /* '' */
+.icon-calendar:before { content: '\e817'; } /* '' */
+.icon-github:before { content: '\f113'; } /* '' */
+
+:root {
+  --primary-colour: #ff00a0;
+  --primary-colour-analogous-1: #b300ff;
+  --primary-colour-analogous-2: #ff0800;
+  --primary-colour-complementary: #00ff5e;
+  --primary-tint-colour: #ffedf8;
+  --secondary-tint-colour: #ffdbf2;
+  --tertiary-tint-colour: #ffc8eb;
+  --primary-text-colour: #666666;
+  --secondary-text-colour: #999999;
+  --primary-text-tint-colour: #cccccc;
+  --primary-meta-colour: #aaaaaa;
+  --primary-heading-colour: #444444;
+  --primary-bg-colour: #ffffff;
+  --secondary-bg-colour: #f9f9f9;
+  --border-bg-rainbow: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #800080) 1;
+}
+
+body {
+  font-family: 'Average Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  line-height: 1.5;
+  font-size: 18px;
+  margin: 0;
+  background: var(--primary-bg-colour);
+  color: var(--primary-text-colour);
+  border-top: 1px solid var(--primary-colour);
+}
+
+@media (max-width: 799px) {
+  body {
+    padding: 15px;
+    font-size: .95em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, h7, h8 {
+  font-family: 'Goudy Bookletter 1911', 'Times New Roman', Times, Georgia, serif;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: var(--primary-heading-colour);
+}
+h1 {
+  font-size: 42px;
+  margin-top: 40px;
+}
+h2 {
+  margin-top: 60px;
+  position: relative;
+  font-size: 32px;
+}
+h3 {
+  font-size: 22px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+a { text-decoration: none; color: var(--primary-colour); }
+a:hover { text-decoration: underline;}
+
+pre {
+}
+pre.src, code {
+  font-family: 'Source Code Pro', Monaco, 'DejaVu Sans Mono', 'Lucida Console', Courier, monospace;
+  font-size: .85em;
+}
+pre.src {
+  overflow-y: auto !important;
+}
+code {
+  border: 1px solid var(--primary-tint-colour);
+  padding: 0px 4px;
+  color: var(--primary-text-colour);
+  overflow-x: auto;
+  border-radius: 5px;
+}
+li {
+  margin-bottom: 1em;
+}
+
+img { height: auto; }
+@media (max-width: 799px) {
+  img { max-width: 100%; }
+}
+
+figure {
+  margin: 0;
+  text-align: center;
+}
+
+figcaption {
+  text-align: center;
+}
+
+blockquote {
+  background: var(--secondary-bg-colour);
+  border-left: 5px solid var(--primary-text-tint-colour);
+  margin: 1.5em 0;
+  padding: 0.5em 15px;
+  quotes: '\201C''\201D''\2018''\2019';
+}
+blockquote:before {
+  color: var(--primary-text-tint-colour);
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+#text-table-of-contents li {
+  margin-bottom: 0;
+}
+
+.tag {
+  background: transparent;
+  font-size: 0.6em;
+}
+.tag span {
+  background: var(--primary-colour-analogous-1);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.pubdate {
+  color: var(--primary-meta-colour);
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-top: -16px;
+}
+.pubdate p {
+  display: inline;
+  margin-right: 10px;
+}
+@media (max-width: 800px) {
+  .pubdate {
+    margin-top: 0;
+    text-align: left;
+  }
+}
+
+header .subtitle { color: var(--primary-meta-colour); }
+
+.nav-blog {
+  text-align: right;
+}
+.org-info-js_info-navigation {
+  background: var(--secondary-bg-colour);
+}
+@media (min-width: 800px) {
+  #content,
+  #postamble {
+    margin: 0 auto;
+    max-width: 700px !important;
+    width: 700px !important;
+  }
+}
+#content {
+  margin-top: 10px;
+}
+#postamble {
+  font-size: 0.8em;
+  line-height: 1.25em;
+  margin-top: 3em;
+  text-align: center;
+  color: var(--primary-meta-colour);
+  padding: 15px 0;
+  border-top: 1px solid;
+  border-image: var(--border-bg-rainbow);
+}
+
+.footer p {
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+  #preamble {
+    width: 700px;
+    margin: 0px auto;
+    position: relative;
+  }
+}
+.intro {
+  color: var(--primary-meta-colour);
+  text-align: center;
+}
+.intro h1 {
+  font-size: 42px;
+  line-height: 1em;
+  margin: .3em;
+  padding: 0;
+}
+.intro p {
+  color: var(--primary-meta-colour);
+  font-size: 14px !important;
+  text-align: center;
+}
+.intro img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.nav {
+  text-align: center;
+  margin-top: 20px;
+  border-bottom: 1px solid;
+  border-image: var(--border-bg-rainbow);
+  font-size: 0.8em;
+}
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+.nav ul li {
+  color: var(--secondary-text-colour);
+  display: inline-block;
+  margin: 0;
+}
+.nav ul li a {
+  display: inline-block;
+  padding-right: 6px;
+  border-radius: 0;
+  font-weight: normal;
+}
+#disqus_thread {
+  margin-top: 40px;
+}
+.clearfix {
+  clear: both;
+}
+@media (min-width: 799px) {
+  .contact {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    -moz-column-gap: 3em;
+    -webkit-column-gap: 3em;
+    column-count: 2;
+    column-gap: 3em;
+  }
+}

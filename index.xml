@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>Articles</title>
+  <atom:link href="http://example.com/index.xml" rel="self" type="application/rss+xml" />
+  <link>http://example.com/</link>
+  <description><![CDATA[]]></description>
+  <language>en</language>
+  <pubDate>Sun, 14 Jun 2020 14:48:43 +0100</pubDate>
+  <lastBuildDate>Sun, 14 Jun 2020 14:48:43 +0100</lastBuildDate>
+  <generator>Emacs 26.3 Org-mode 9.3.7</generator>
+  <webMaster>liwenkz@Liwens-MBP (Liwen Knight-Zhang)</webMaster>
+  <image>
+    <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
+    <title>Articles</title>
+    <link>http://example.com/</link>
+  </image>
+
+  <ul class="org-ul">
+    <li><p>
+      <a href="easypg.html">Encrypt in Emacs with EasyPG</a>
+    </p>
+    <p class='pubdate'>Mar 21, 2017</p></li>
+    <li><p>
+      <a href="gnupg.html">Data encryption with GnuPG</a>
+    </p>
+    <p class='pubdate'>Aug 22, 2012</p></li>
+  </ul>
+</channel>
+</rss>
