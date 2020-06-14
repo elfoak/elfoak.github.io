@@ -96,26 +96,26 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org36cc049">Why I am paranoid about security?</a></li>
-<li><a href="#org915c443">Encrypt data with GnuPG</a>
+<li><a href="#orga816ff5">Why I am paranoid about security?</a></li>
+<li><a href="#orgcf60248">Encrypt data with GnuPG</a>
 <ul>
-<li><a href="#org66a4e7e">Get the Tools Ready</a></li>
-<li><a href="#org76e88dd">Generate a Keypair</a></li>
-<li><a href="#orgabb4383">Generate a Revocation Certificate</a></li>
-<li><a href="#org0a5da32">Deploy &amp; backup keys</a></li>
-<li><a href="#org57bf1f5">Export public key</a></li>
+<li><a href="#org4ae4262">Get the Tools Ready</a></li>
+<li><a href="#org46fa261">Generate a Keypair</a></li>
+<li><a href="#org106779a">Generate a Revocation Certificate</a></li>
+<li><a href="#orgb7fa2a8">Deploy &amp; backup keys</a></li>
+<li><a href="#orga3e633d">Export public key</a></li>
 </ul>
 </li>
-<li><a href="#orgf4b8c34">Encrypt &amp; decrypt documents</a></li>
-<li><a href="#org110fa3c">What&rsquo;s next?</a></li>
+<li><a href="#org39170c1">Encrypt &amp; decrypt documents</a></li>
+<li><a href="#orgd911be1">What&rsquo;s next?</a></li>
 </ul>
 </div>
 </nav>
 
 
-<section id="outline-container-org36cc049" class="outline-2">
-<h2 id="org36cc049">Why I am paranoid about security?</h2>
-<div class="outline-text-2" id="text-org36cc049">
+<section id="outline-container-orga816ff5" class="outline-2">
+<h2 id="orga816ff5">Why I am paranoid about security?</h2>
+<div class="outline-text-2" id="text-orga816ff5">
 <p>
 After working with hundreds of legacy websites during my early web
 development years, I’ve learnt not to trust any small e-commerce sites
@@ -139,9 +139,9 @@ disasters.
 </div>
 </section>
 
-<section id="outline-container-org915c443" class="outline-2">
-<h2 id="org915c443">Encrypt data with GnuPG</h2>
-<div class="outline-text-2" id="text-org915c443">
+<section id="outline-container-orgcf60248" class="outline-2">
+<h2 id="orgcf60248">Encrypt data with GnuPG</h2>
+<div class="outline-text-2" id="text-orgcf60248">
 <p>
 From deliberately changing file extension to zipping sensitive info with
 password, rudimentary tricks can certainly provide some level of security
@@ -183,9 +183,9 @@ both physical access to the private key and the correct password.
 </p>
 </div>
 
-<div id="outline-container-org66a4e7e" class="outline-3">
-<h3 id="org66a4e7e">Get the Tools Ready</h3>
-<div class="outline-text-3" id="text-org66a4e7e">
+<div id="outline-container-org4ae4262" class="outline-3">
+<h3 id="org4ae4262">Get the Tools Ready</h3>
+<div class="outline-text-3" id="text-org4ae4262">
 <p>
 <a href="http://www.gnupg.org">The GNU Privacy Guard</a> (GnuPG) is a superb implementation of <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">OpenPGP</a>
 standard, which is historically from the famous <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">Pretty Good Privacy</a>
@@ -212,9 +212,9 @@ more than adequate. Let&rsquo;s get started.
 </div>
 </div>
 
-<div id="outline-container-org76e88dd" class="outline-3">
-<h3 id="org76e88dd">Generate a Keypair</h3>
-<div class="outline-text-3" id="text-org76e88dd">
+<div id="outline-container-org46fa261" class="outline-3">
+<h3 id="org46fa261">Generate a Keypair</h3>
+<div class="outline-text-3" id="text-org46fa261">
 <p>
 To verify GnuPG installation, issue the command
 </p>
@@ -261,9 +261,9 @@ edited once the keypair is created so type in carefully.
 </div>
 </div>
 
-<div id="outline-container-orgabb4383" class="outline-3">
-<h3 id="orgabb4383">Generate a Revocation Certificate</h3>
-<div class="outline-text-3" id="text-orgabb4383">
+<div id="outline-container-org106779a" class="outline-3">
+<h3 id="org106779a">Generate a Revocation Certificate</h3>
+<div class="outline-text-3" id="text-org106779a">
 <p>
 If you forget your password or your private key is compromised, a revocation
 certificate can be used to revoke your public key so no one can use it to
@@ -290,9 +290,9 @@ forget to delete the <code>revoke.txt</code> file permanently from your computer
 </div>
 </div>
 
-<div id="outline-container-org0a5da32" class="outline-3">
-<h3 id="org0a5da32">Deploy &amp; backup keys</h3>
-<div class="outline-text-3" id="text-org0a5da32">
+<div id="outline-container-orgb7fa2a8" class="outline-3">
+<h3 id="orgb7fa2a8">Deploy &amp; backup keys</h3>
+<div class="outline-text-3" id="text-orgb7fa2a8">
 <p>
 In order to be able to view the encrypted files on all your computers, the
 keypair needs to be deployed onto every machine. This also means you have
@@ -301,9 +301,9 @@ one of the computers, the encrypted data is still accessible.
 </p>
 </div>
 
-<div id="outline-container-org948c4ca" class="outline-4">
-<h4 id="org948c4ca">List all keypairs</h4>
-<div class="outline-text-4" id="text-org948c4ca">
+<div id="outline-container-orgbc7d6f0" class="outline-4">
+<h4 id="orgbc7d6f0">List all keypairs</h4>
+<div class="outline-text-4" id="text-orgbc7d6f0">
 <p>
 To see all the keypairs in your operating system, issue the command
 below. It would list them all and the <code>uid</code> of each.
@@ -316,9 +316,9 @@ below. It would list them all and the <code>uid</code> of each.
 </div>
 </div>
 
-<div id="outline-container-org57bf1f5" class="outline-3">
-<h3 id="org57bf1f5">Export public key</h3>
-<div class="outline-text-3" id="text-org57bf1f5">
+<div id="outline-container-orga3e633d" class="outline-3">
+<h3 id="orga3e633d">Export public key</h3>
+<div class="outline-text-3" id="text-orga3e633d">
 <p>
 Use the <code>--export</code> option to export the public key. The exported key
 file will be in binary format by default.
@@ -339,9 +339,9 @@ If you need to send the key though email or copy it to clipboard, add the
 </div>
 </div>
 
-<div id="outline-container-org6f7dc14" class="outline-4">
-<h4 id="org6f7dc14">Export private key</h4>
-<div class="outline-text-4" id="text-org6f7dc14">
+<div id="outline-container-orgbea1024" class="outline-4">
+<h4 id="orgbea1024">Export private key</h4>
+<div class="outline-text-4" id="text-orgbea1024">
 <p>
 Use the <code>--export-secret-key</code> option to export any private keys. As with public keys, use option
 <code>--armor</code> to export in plain text. Actually any output from GnuGP can be decorated with
@@ -356,9 +356,9 @@ good old friend <code>man</code>.
 </div>
 </div>
 
-<div id="outline-container-orgcad2683" class="outline-4">
-<h4 id="orgcad2683">Deploy keypair onto other computers</h4>
-<div class="outline-text-4" id="text-orgcad2683">
+<div id="outline-container-orge4d6d3a" class="outline-4">
+<h4 id="orge4d6d3a">Deploy keypair onto other computers</h4>
+<div class="outline-text-4" id="text-orge4d6d3a">
 <p>
 Copy the exported private key (binary or plain text) onto the destination
 computer; make sure the new machine has GunPG installed. To import a key,
@@ -382,9 +382,9 @@ knowing their private key.
 </div>
 </div>
 
-<div id="outline-container-org618c700" class="outline-4">
-<h4 id="org618c700">Verify the imported keys</h4>
-<div class="outline-text-4" id="text-org618c700">
+<div id="outline-container-org9a0bc26" class="outline-4">
+<h4 id="org9a0bc26">Verify the imported keys</h4>
+<div class="outline-text-4" id="text-org9a0bc26">
 <p>
 All the imported public keys must be validated by verifying the keys&rsquo;
 fingerprints and then signing them. However if the corresponding private keys
@@ -410,9 +410,9 @@ Now everything is setup and you are ready to hide all your secrets!
 </div>
 </section>
 
-<section id="outline-container-orgf4b8c34" class="outline-2">
-<h2 id="orgf4b8c34">Encrypt &amp; decrypt documents</h2>
-<div class="outline-text-2" id="text-orgf4b8c34">
+<section id="outline-container-org39170c1" class="outline-2">
+<h2 id="org39170c1">Encrypt &amp; decrypt documents</h2>
+<div class="outline-text-2" id="text-org39170c1">
 <p>
 The <code>--encrypt</code> option can be used to encrypt a document.
 </p>
@@ -475,9 +475,9 @@ You will be prompted to enter the password for your private key.
 </div>
 </section>
 
-<section id="outline-container-org110fa3c" class="outline-2">
-<h2 id="org110fa3c">What&rsquo;s next?</h2>
-<div class="outline-text-2" id="text-org110fa3c">
+<section id="outline-container-orgd911be1" class="outline-2">
+<h2 id="orgd911be1">What&rsquo;s next?</h2>
+<div class="outline-text-2" id="text-orgd911be1">
 <p>
 This open note focuses on the basic usage of GnuPG commands to give readers
 an insight of PGP encryption. In reality, if you are not a savvy shell user,
@@ -492,7 +492,8 @@ encryption/decryption process.
 <footer id="postamble" class="status">
 <div class='footer'>
     <p>Copyright © 2011-2020 Liwen Knight-Zhang</p>
-    <p>Last updated on Jun 12, 2020 using <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.7) <i class='icon-emo-thumbsup'></i></p>
+    <p>Last updated on Jun 12, 2020</p>
+    <p>Published with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.7) <i class='icon-emo-thumbsup'></i>
 </div>
 </footer>
 </body>
