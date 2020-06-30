@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- Jun 30, 2020 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Use mbsync &amp; mu4e for emails in Emacs</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Liwen Knight-Zhang" />
+<meta name="keywords" content="emacs, mu4e, isync post" />
+<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
+<link rel='manifest' href='/site.webmanifest'>
+<meta name='msapplication-TileColor' content='#da532c'>
+<meta name='theme-color' content='#ffffff'>
+
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Average+Sans&family=Goudy+Bookletter+1911&display=swap' rel='stylesheet' />
+<link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
+<link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="/"> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><header id="top" class="status">
+<div class='intro'>
+  <img src='/images/about/profile.png' alt='Liwen Knight-Zhang' class='no-border'/>
+  <h1>Liwen Knight-Zhang</h1>
+  <p>Emacser, Coder, Husband & Lifelong Learner</p>
+</div>
+
+<div class='nav'>
+  <ul>
+    <li><a href='/'><i class='icon-home-outline'></i> Home</a></li>
+    <li><a href='/about'><i class='icon-user'></i> About</a></li>
+    <!--<li><a href='http://github.com/lwkz'><i class='icon-github'></i> GitHub</a><li>-->
+    <li><a href='/index.xml'><i class='icon-rss-outline'></i> RSS</a><li>
+    <!--<li><a href='https://www.twitter.com'><i class='icon-twitter'></i> Twitter</a></li>-->
+  </ul>
+</div>
+</header>
+<main id="content">
+<header>
+<h1 class="title">Use mbsync &amp; mu4e for emails in Emacs</h1>
+<p class="subtitle">Published on Jun 28, 2020</p>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd71c4f9">Motivation</a></li>
+<li><a href="#org246e527">Configure your Gmail account</a>
+<ul>
+<li><a href="#org7a41c86">App Password</a></li>
+<li><a href="#orgb0e5f8b">Tags</a></li>
+</ul>
+</li>
+<li><a href="#orgf41da1b">The three parts of the setup</a>
+<ul>
+<li><a href="#org2403973"><b>mbsync</b> - synchronise Maildir mailboxes using IMAP4</a></li>
+<li><a href="#org3c1631a"><b>mu</b> - a search engineer for Maildir emails</a></li>
+<li><a href="#org0287c30"><b>mu4e</b> - an email client for Emacs, built on top of mu</a></li>
+</ul>
+</li>
+<li><a href="#orgbff1db7">The Results</a></li>
+</ul>
+</div>
+</nav>
+
+<section id="outline-container-orgd71c4f9" class="outline-2">
+<h2 id="orgd71c4f9">Motivation</h2>
+<div class="outline-text-2" id="text-orgd71c4f9">
+<p>
+Email is a primary communication medium and I wanted my email system to be able
+to:
+</p>
+
+<ol class="org-ol">
+<li>read, archive, delete and draft my emails offline <a id="org9169cc8"></a></li>
+<li>store emails as plain text files <a id="org15d9418"></a></li>
+<li>search emails across multiple accounts <a id="orgb92c6ba"></a></li>
+<li>link emails to my todo items or notes directly <a id="orgda5a856"></a></li>
+<li>have powerful search options <a id="orgbe9e96c"></a></li>
+<li>find emails instantly, even with hundreds of thousands emails <a id="org268bd2f"></a></li>
+<li>find emails without having to remember folders, tags or categories <a id="orgd464938"></a></li>
+<li>archive, backup and move emails between different accounts and service providers easily <a id="org57c3cd6"></a></li>
+<li>do all of above in Emacs <a id="orgce11a2e"></a></li>
+</ol>
+
+<p>
+If that&rsquo;s something sounds appealing to you too, read on. 
+</p>
+
+<p>
+I have six Gmail accounts and one Outlook mailbox, with about 20k messages in
+total. I was frustrated as I couldn&rsquo;t find any email client or webmail that can
+do all of what I wanted.
+</p>
+
+<p>
+I embarked on a journey to find the best setup that works for me. After trying
+many tools, including <a href="https://www.thunderbird.net/en-GB/">Thunderbird</a>, <a href="https://airmailapp.com/">Airmail</a>, <a href="https://www.gnu.org/software/emacs/manual/html_node/gnus/">Gnus</a> and <a href="https://notmuchmail.org/">Notmuch</a> + <a href="http://www.offlineimap.org/">OfflineIMAP</a>,
+eventually I settled down with <a href="https://www.djcbsoftware.nl/code/mu/">mu(mu4e)</a> &amp; <a href="http://isync.sourceforge.net/mbsync.html">mbsync</a>. I have been using this setup
+for a couple of years and I am fairly happy with it.
+</p>
+
+<p>
+I wanted to write down how I configured my setup in detail, where and why I had
+to tweak things, to serve as a reminder to myself and hope to help anyone who
+reads this avoid the same problems I had to go through.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org246e527" class="outline-2">
+<h2 id="org246e527">Configure your Gmail account</h2>
+<div class="outline-text-2" id="text-org246e527">
+<p>
+Thanks to Gmail&rsquo;s quirky <a href="https://tools.ietf.org/html/rfc3501">IMAP</a> implementation, I had to go through a lot of
+trial and error to make Gmail play nicely with open source tools. More
+importantly, to work for my own workflow.
+</p>
+
+<p>
+Before we dive into the setup and start synchronising thousands of emails,
+let&rsquo;s go through some of the changes I&rsquo;ve made and the reasons behind the
+tweaks.
+</p>
+</div>
+
+<div id="outline-container-org7a41c86" class="outline-3">
+<h3 id="org7a41c86">App Password</h3>
+<div class="outline-text-3" id="text-org7a41c86">
+<p>
+If you&rsquo;ve enabled 2-step verification for Google sign in, you&rsquo;ll need to
+generate an App password for mbsync. If &ldquo;enable less secure applications&rdquo;
+option is disabled by your domain admin or you don&rsquo;t like the sound of &ldquo;less
+secure&rdquo;, you can use something like <a href="https://github.com/google/gmail-oauth2-tools/blob/master/python/oauth2.py">this</a> to get OAuth access token.
+</p>
+
+<p>
+Head to Google Account → Security → Signing in to Google → App passwords:
+</p>
+
+
+<figure>
+<img src="../images/posts/mu4e/apppassword.png" alt="apppassword.png" />
+
+</figure>
+
+<p>
+Once you have the password, put it in your <code>~/.authinfo.gpg</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-conf">machine imap.gmail.com login hello@liwen.name port 993 password rtmkwnaqtdx39sido3sld
+machine smtp.gmail.com login hello@liwen.name port 587 password rtmkwnaqtdx39sido3sld
+</pre>
+</div>
+
+
+<p>
+Head to your Gmail settings → Forwarding and POP/IMAP, and turn
+&rsquo;Auto-Expunge&rsquo; off:
+</p>
+
+
+<figure>
+<img src="../images/posts/mu4e/gmail-auto-expunge.png" alt="gmail-auto-expunge.png" />
+
+</figure>
+
+<p>
+When &rsquo;Auto-Expunge&rsquo; is on, Gmail will archive emails that are marked for
+deletion instead of deleting them. When I say delete, I would like my emails
+to be really deleted. Since my primary method of finding emails is through
+search and I would prefer not seeing deleted messages appearing in the
+serach results.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb0e5f8b" class="outline-3">
+<h3 id="orgb0e5f8b">Tags</h3>
+<div class="outline-text-3" id="text-orgb0e5f8b">
+<p>
+Tagging has become a key part of many people&rsquo;s workflow. Being able to tag a
+single email with multiple tags allow you to add custom metadata to emails
+for easy filtering. However, custom tags are not part of the IMAP
+standards. Different email providers and email clients implemented tagging
+differently over the years. Many tools map tags with folders (Maildir
+mailboxes). This causes another potential issue - message
+duplication. E.g. if a message is tagged with &rsquo;Family&rsquo;, &rsquo;Holiday&rsquo; and
+&rsquo;Finance&rsquo; in Gmail, it will be synchronised into <code>/Family</code>, <code>/Holiday</code> and
+<code>/Finance</code> folders on you local computer. When you do a search, all three
+messages will appear in the search result.  Depending on your workflow this
+may or may not be an issue. Personally I prefer <i>searching</i> over
+<i>organising</i>. If you can get what you need by asking a question (search),
+why would you need to remember where the infomation is stored in the first
+place (organise)? Personally I never can remember what tags to use when I
+want to know &rsquo;how many sandwiches I need to bring to the picnic next week
+with Joe at Greenwich Park&rsquo;, instead I search <code>sandwich picnic greenwich
+    joe</code>.
+</p>
+
+<p>
+If you really want both, you can still do it with some <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Adding-a-new-kind-of-mark.html">Emacs code</a>.
+</p>
+
+<p>
+Time to delete all the unnecessary tags in Gmail and move on.
+</p>
+</div>
+</div>
+</section>
+
+<section id="outline-container-orgf41da1b" class="outline-2">
+<h2 id="orgf41da1b">The three parts of the setup</h2>
+<div class="outline-text-2" id="text-orgf41da1b">
+<p>
+There are three main parts in this setup: <a href="#org2403973">mbsync</a>, <a href="#org3c1631a">mu</a> and <a href="#org0287c30">mu4e</a>. Using three
+pieces of software just for emails? You may think this is totally
+overkill. Let me explain why this is actually the best approach. As Unix
+philosophy says - &rsquo;specific pieces of software should be built to do one
+thing and do that one thing well&rsquo;.
+</p>
+</div>
+
+<div id="outline-container-org2403973" class="outline-3">
+<h3 id="org2403973"><b>mbsync</b> - synchronise <a href="https://en.wikipedia.org/wiki/Maildir#:~:text=From%20Wikipedia%2C%20the%20free%20encyclopedia,are%20added%2C%20moved%20and%20deleted.">Maildir</a> mailboxes using IMAP4</h3>
+<div class="outline-text-3" id="text-org2403973">
+<p>
+mbsync creates a bunch of folders on your hard drive which maps to the
+&rsquo;folders&rsquo; or &rsquo;tags&rsquo; in your email accounts. It puts each individual email as
+a plain text file in the respective folders and handles the synchronisation
+between your local copies and the emails stored on the server.
+</p>
+
+<blockquote>
+<p>
+The Maildir e-mail format is a common way of storing email messages in which
+each message is stored in a separate file with a unique name, and each mail
+folder is a file system directory. The local file system handles file
+locking as messages are added, moved and deleted. A major design goal of
+Maildir is to eliminate the need for program code to handle file locking and
+unlocking. &#x2014; <a href="https://en.wikipedia.org/wiki/Maildir#:~:text=From%20Wikipedia%2C%20the%20free%20encyclopedia,are%20added%2C%20moved%20and%20deleted.">Wikipedia</a>
+</p>
+</blockquote>
+
+<p>
+This satisfies <a href="#org9169cc8">1</a>, <a href="#org15d9418">2</a> &amp; <a href="#orgb92c6ba">3</a>, and it makes <a href="#orgda5a856">4</a> possible.
+</p>
+
+<p>
+mbsync can be installed via <code>homebrew</code> on Mac OS:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span class="org-comment-delimiter"># </span><span class="org-comment">'isync' is the project name. 'mbsync' is the current executable name. The</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">unusal mismatch is due to historical breaking changes.</span>
+brew install isync
+</pre>
+</div>
+
+<p>
+mbsync requires a configuration file to run. Read more about all the
+configuration options <a href="http://isync.sourceforge.net/mbsync.html">here</a>.
+</p>
+
+<p>
+Here is how my <code>~/.mbsyncrc</code> looks like:
+</p>
+<div class="org-src-container">
+<pre class="src src-conf"><span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Sample configuration for Gmail account</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Please refer to http://isync.sourceforge.net/mbsync.html for more details</span>
+<span class="org-comment-delimiter">#</span>
+
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">IMAP4 Account name, starting a new email account configuration</span>
+IMAPAccount my_account
+Host imap.gmail.com
+User example@gmail.com
+<span class="org-comment-delimiter"># </span><span class="org-comment">Specify a shell command to obtain the password</span>
+PassCmd <span class="org-string">"gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine imap.gmail.com login example@gmail.com/ {print $NF}'"</span>
+SSLType IMAPS
+SSLVersion TLSv1.2
+AuthMechs LOGIN
+<span class="org-comment-delimiter"># </span><span class="org-comment">On MacOS, I had to install openssl from homebrew for the certificate</span>
+CertificateFile /usr/local/etc/openssl/cert.pem
+<span class="org-comment-delimiter"># </span><span class="org-comment">On Linux, you may find the certificate here</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">CertificateFile /etc/ssl/certs/ca-certificates.crt</span>
+
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Define the Maildir</span>
+MaildirStore myaccount-local
+<span class="org-comment-delimiter"># </span><span class="org-comment">Fatten nested Gmail labels. E.g /[Gmail]/Trash becomes /[Gmail].Trash</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">This also renders 'SubFolders' setting irrelevant</span>
+Flatten .
+<span class="org-comment-delimiter"># </span><span class="org-comment">The trailing "/" is important.  Make sure both ~/Mail &amp;</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">~/mail/example@gmail.com directories exist, otherwise mbsync will complain.</span>
+Path ~/Mail/example@gmail.com/
+Inbox ~/Mail/example@gmail.com/Inbox
+
+<span class="org-comment-delimiter"># </span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Define the IMAP4</span>
+IMAPStore myaccount-remote
+Account myaccount
+
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Define the Channel</span>
+Channel mychannel
+Master :myaccount-remote:
+Slave :myaccount-local:
+<span class="org-comment-delimiter"># </span><span class="org-comment">Here I synchronise everything apart from 'Starred' and 'Important' folders,</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">these two labels (Gmail's term) have no use to my workflow</span>
+Patterns Inbox * ![Gmail].Starred ![Gmail].Important
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Automatically create missing mailboxes, both locally and on the server</span>
+Create Both
+<span class="org-comment-delimiter"># </span><span class="org-comment">*CAUTION*: Please read http://isync.sourceforge.net/mbsync.html#RECOMMENDATIONS for more details</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">I prefer mbsync to delete the email completely on the server when I delete it locally and do a sync</span>
+Expunge Both
+<span class="org-comment-delimiter"># </span><span class="org-comment">Save the synchronisation state files in the relevant directory</span>
+SyncState *
+
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Sample configuration for Outlook account</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Please refer to http://isync.sourceforge.net/mbsync.html for more details</span>
+<span class="org-comment-delimiter">#</span>
+
+IMAPAccount outlook
+Host outlook.office365.com
+User example@hotmail.com
+PassCmd <span class="org-string">"gpg -q --for-your-eyes-only --no-tty -d ~/.authinfo.gpg | awk '/machine smtp.office365.com login example@hotmail.com/ {print $NF}'"</span>
+SSLType IMAPS
+SSLVersion TLSv1.2
+AuthMechs LOGIN
+CertificateFile /usr/local/etc/openssl/cert.pem
+
+MaildirStore outlook-local
+Flatten .
+Path ~/Mail/example@hotmail.com/
+
+IMAPStore outlook-remote
+Account outlook
+
+Channel outlook
+Master :outlook-remote:
+Slave :outlook-local:
+Patterns * !Junk
+
+Create Both
+Expunge Both
+SyncState *
+
+<span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Synchronise everything </span>
+<span class="org-comment-delimiter">#</span>
+
+Sync All
+</pre>
+</div>
+
+
+<p>
+Let&rsquo;s try our configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mbsync --all
+</pre>
+</div>
+
+<p>
+You should see something like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">C: 6/7  B: 47/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +3/3 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 48/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +29/29 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 49/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +43/43 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 50/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +43/43 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 51/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +49/49 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 52/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 53/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 54/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 55/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 56/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 6/7  B: 57/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+Maildir notice: no UIDVALIDITY, creating new.
+C: 7/7  B: 58/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3c1631a" class="outline-3">
+<h3 id="org3c1631a"><b>mu</b> - a search engineer for Maildir emails</h3>
+<div class="outline-text-3" id="text-org3c1631a">
+<p>
+<a href="https://www.djcbsoftware.nl/code/mu/">mu</a> can be installed with <code>hombrew</code> on Mac OS:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">brew install mu
+</pre>
+</div>
+
+<p>
+Make sure you read the mu man page:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">man mu
+</pre>
+</div>
+
+<p>
+First let&rsquo;s run <code>mu index</code> to build the local database/index of all our messages.
+</p>
+
+<p>
+To find the order confirmation for my West Digital drive from Amazon:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">mu find amazon west digital
+
+Fri 11 Oct 07:34:55 2019 <span class="org-string">"Amazon.co.uk"</span> <a href="mailto:auto-confirm%40amazon.co.uk">&lt;auto-confirm@amazon.co.uk&gt;</a> Your Amazon.co.uk order of <span class="org-string">"Happy Hacking Keyboard..."</span> and 1 more item(s)
+</pre>
+</div>
+
+<p>
+The search result is instant.
+</p>
+
+<p>
+<code>mu</code> fulfils <a href="#orgbe9e96c">5</a>, <a href="#org268bd2f">6</a> and <a href="#orgd464938">7</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0287c30" class="outline-3">
+<h3 id="org0287c30"><b>mu4e</b> - an email client for Emacs, built on top of mu</h3>
+<div class="outline-text-3" id="text-org0287c30">
+<p>
+This is my <code>mu4e</code> configuration:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">mu4e</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">smtpmail</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">org-mu4e</span>)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Mu4e general settings</span>
+(<span class="org-keyword">setq</span> mail-user-agent 'mu4e-user-agent <span class="org-comment-delimiter">;; </span><span class="org-comment">Use mu4e as default Emacs mail agent</span>
+      mu4e-maildir <span class="org-string">"~/Mail"</span>
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Use mbsync for mail sync</span>
+      mu4e-get-mail-command <span class="org-string">"mbsync -a"</span>
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Don't save message to Sent Messages, Gmail/IMAP takes care of this</span>
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Override in context switching for other type of mailboxes</span>
+      mu4e-sent-messages-behavior 'delete
+      message-kill-buffer-on-exit t
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">This fixes the error 'mbsync error: UID is x beyond highest assigned UID x'</span>
+      mu4e-change-filenames-when-moving t
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Eye candies &amp; attachment handling</span>
+      mu4e-view-show-images t
+      mu4e-use-fancy-chars t
+      mu4e-attachment-dir <span class="org-string">"~/Downloads"</span>
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Store link to message if in header view, not to header query</span>
+      org-mu4e-link-query-in-headers-mode nil
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">This helps when using a dark theme (shr)</span>
+      shr-color-visible-luminance-min 80
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Citation format</span>
+      message-citation-line-format <span class="org-string">"On %a, %b %d %Y, %N wrote:"</span>
+      message-citation-line-function 'message-insert-formatted-citation-line
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Always use 587 for sending emails</span>
+      message-send-mail-function 'smtpmail-send-it
+      starttls-use-gnutls t
+      smtpmail-smtp-service 587
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Use 'helm' to for mailbox selection completion</span>
+      mu4e-completing-read-function 'completing-read
+
+      <span class="org-comment-delimiter">;; </span><span class="org-comment">Context switch policy</span>
+      mu4e-context-policy 'ask
+      mu4e-compose-context-policy nil)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Add option to view html message in a browser</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">`aV` in view to activate</span>
+(add-to-list 'mu4e-view-actions
+             '(<span class="org-string">"ViewInBrowser"</span> . mu4e-action-view-in-browser) t)
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Mu4e contexts </span>
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">This will ensure the right 'sent from' address and email sign off etc. be</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">picked up when replying to emails.</span>
+(<span class="org-keyword">setq</span> mu4e-contexts
+      `(
+        ,(make-mu4e-context
+          <span class="org-builtin">:name</span> <span class="org-string">"development"</span>
+          <span class="org-builtin">:enter-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Entering Dev account context"</span>))
+          <span class="org-builtin">:leave-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Leaving De account context"</span>))
+          <span class="org-comment-delimiter">;; </span><span class="org-comment">We match based on the contact-fields of the message</span>
+          <span class="org-builtin">:match-func</span> (<span class="org-keyword">lambda</span> (msg)
+                        (<span class="org-keyword">when</span> msg
+                          (mu4e-message-contact-field-matches msg <span class="org-builtin">:to</span> <span class="org-string">"nospam@example.com"</span>)))
+          <span class="org-builtin">:vars</span> '((user-mail-address . <span class="org-string">"nospam@example.com"</span>)
+                  (user-full-name . <span class="org-string">"Liwen Knight-Zhang"</span>)
+                  (mu4e-drafts-folder . <span class="org-string">"/nospam@example.com/[Gmail].Drafts"</span>)
+                  (mu4e-sent-folder . <span class="org-string">"/nospam@example.com/[Gmail].Sent Mail"</span>)
+                  (mu4e-trash-folder . <span class="org-string">"/nospam@example.com/[Gmail].Trash"</span>)
+                  (smtpmail-smtp-server . <span class="org-string">"smtp.gmail.com"</span>)
+                  (smtpmail-smtp-user . <span class="org-string">"nospam@example.com"</span>)
+                  (smtpmail-starttls-credentials . '((<span class="org-string">"smtp.gmail.com"</span> 587 nil nil)))
+                  (smtpmail-auth-credentials . '((<span class="org-string">"smtp.gmail.com"</span> 587 <span class="org-string">"nospam@example.com"</span> nil)))
+                  (smtpmail-default-smtp-server . <span class="org-string">"smtp.gmail.com"</span>)))
+
+        ,(make-mu4e-context
+          <span class="org-builtin">:name</span> <span class="org-string">"newsletters"</span>
+          <span class="org-builtin">:enter-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Entering Newsletters context"</span>))
+          <span class="org-builtin">:leave-func</span> (<span class="org-keyword">lambda</span> () (mu4e-message <span class="org-string">"Leaving Newsletters context"</span>))
+          <span class="org-builtin">:match-func</span> (<span class="org-keyword">lambda</span> (msg)
+                        (<span class="org-keyword">when</span> msg
+                          (mu4e-message-contact-field-matches msg <span class="org-builtin">:to</span> <span class="org-string">"newsletter@example.com"</span>)))
+          <span class="org-builtin">:vars</span> '((user-mail-address . <span class="org-string">"newsletter@example.com"</span>)
+                  (user-full-name . <span class="org-string">"Liwen Knight-Zhang"</span>)
+                  (mu4e-compose-signature . (concat <span class="org-string">"Liwen Knight-Zhang | +44 (0)7894 222 323\n"</span>))
+                  (mu4e-drafts-folder . <span class="org-string">"/newsletter@example.com/[Google Mail].Drafts"</span>)
+                  (mu4e-sent-folder . <span class="org-string">"/newsletter@example.com/[Google Mail].Sent Mail"</span>)
+                  (mu4e-trash-folder . <span class="org-string">"/newsletter@example.com/[Google Mail].Bin"</span>)
+                  (smtpmail-smtp-server . <span class="org-string">"smtp.gmail.com"</span>)
+                  (smtpmail-smtp-user . <span class="org-string">"newsletter@example.com"</span>)
+                  (smtpmail-starttls-credentials . '((<span class="org-string">"smtp.gmail.com"</span> 587 nil nil)))
+                  (smtpmail-auth-credentials . '((<span class="org-string">"smtp.gmail.com"</span> 587 <span class="org-string">"newsletter@example.com"</span> nil)))))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Use imagemagick, if available</span>
+(<span class="org-keyword">when</span> (fboundp 'imagemagick-register-types)
+  (imagemagick-register-types))
+
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Emulate shr key bindings</span>
+(add-hook 'mu4e-view-mode-hook
+  (<span class="org-keyword">lambda</span>()
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">try to emulate some of the eww key-bindings</span>
+    (local-set-key (kbd <span class="org-string">"&lt;tab&gt;"</span>) 'shr-next-link)
+    (local-set-key (kbd <span class="org-string">"&lt;backtab&gt;"</span>) 'shr-previous-link)))
+
+
+(<span class="org-keyword">provide</span> '<span class="org-constant">lwkz-mu4e</span>)
+</pre>
+</div>
+</div>
+</div>
+</section>
+
+<section id="outline-container-orgbff1db7" class="outline-2">
+<h2 id="orgbff1db7">The Results</h2>
+<div class="outline-text-2" id="text-orgbff1db7">
+<p>
+This is what the final result looks like:
+</p>
+
+
+<figure>
+<img src="../images/posts/mu4e/mu4e-dashboard.png" alt="mu4e-dashboard.png" />
+
+</figure>
+
+
+<figure>
+<img src="../images/posts/mu4e/mu4e-message-view.png" alt="mu4e-message-view.png" />
+
+</figure>
+
+
+<figure>
+<img src="../images/posts/mu4e/mu4e-jump-mailbox.png" alt="mu4e-jump-mailbox.png" />
+
+</figure>
+
+<p>
+Don&rsquo;t forget to read through the <a href="https://www.djcbsoftware.nl/code/mu/mu4e/index.html#SEC_Contents">user manual</a>, check out the <a href="https://www.youtube.com/results?search_query=mu4e">YouTube videos</a> and have fun!
+</p>
+
+<p>
+Finally I&rsquo;ve conquered <a href="#org57c3cd6">8</a> and <a href="#orgce11a2e">9</a>.
+</p>
+</div>
+</section>
+</main>
+<footer id="postamble" class="status">
+<div class='footer'>
+    <p>Copyright © 2011-2020 Liwen Knight-Zhang</p>
+    <p>Last updated on Jun 30, 2020</p>
+    <p>Published with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.7) <i class='icon-emo-thumbsup'></i>
+</div>
+</footer>
+</body>
+</html>
