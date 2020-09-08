@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Sep 08, 2020 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zettelkasten &amp; Org-Roam</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="Liwen Knight-Zhang">
+<meta name="keywords" content="Emacs, Zettelkasten, Learning">
+<link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
+<link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
+<link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
+<link rel='manifest' href='/site.webmanifest'>
+<meta name='msapplication-TileColor' content='#da532c'>
+<meta name='theme-color' content='#ffffff'>
+
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Average+Sans&family=Goudy+Bookletter+1911&display=swap' rel='stylesheet' />
+<link rel='stylesheet' href='/css/site.css?v=2' type='text/css'/>
+<link rel='stylesheet' href='/css/syntax-coloring.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="/"> UP </a>
+ |
+ <a accesskey="H" href="/"> HOME </a>
+</div><header id="top" class="status">
+<div class='intro'>
+  <img src='/images/about/profile.png' alt='Liwen Knight-Zhang' class='no-border'/>
+  <h1>Liwen Knight-Zhang</h1>
+  <p>Emacser, Coder, Husband & Lifelong Learner</p>
+</div>
+
+<div class='nav'>
+  <ul>
+    <li><a href='/'><i class='icon-home-outline'></i> Home</a></li>
+    <li><a href='/about'><i class='icon-user'></i> About</a></li>
+    <!--<li><a href='http://github.com/lwkz'><i class='icon-github'></i> GitHub</a><li>-->
+    <li><a href='/index.xml'><i class='icon-rss-outline'></i> RSS</a><li>
+    <!--<li><a href='https://www.twitter.com'><i class='icon-twitter'></i> Twitter</a></li>-->
+  </ul>
+</div>
+</header>
+<main id="content">
+<header>
+<h1 class="title">Zettelkasten &amp; Org-Roam</h1>
+</header><nav id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8e1cc1e">Why Taking Notes At All</a></li>
+<li><a href="#org676c69c">What is Zettelkasten</a></li>
+<li><a href="#org15d8443">Key Principles of Zettelkasten</a></li>
+<li><a href="#org556a11f">How to Take Smart Notes</a></li>
+<li><a href="#orge812efc">Five Types of Notes</a></li>
+<li><a href="#orgbde638f">Org-Roam</a></li>
+</ul>
+</div>
+</nav>
+
+
+<section id="outline-container-org8e1cc1e" class="outline-2">
+<h2 id="org8e1cc1e">Why Taking Notes At All</h2>
+<div class="outline-text-2" id="text-org8e1cc1e">
+<p>
+I started taking notes when I was in elementary school. I am absolutely
+convinced that it is a good habit in learning new subjects.
+</p>
+
+<p>
+The action of writing things down involves multiple senses working together
+to create stronger memory.
+</p>
+
+<p>
+Taking notes in your own words forces you to think deeply about the ideas
+beyond the passages. To truly understand an idea is not the same as to merely
+comprehend the written text itself. The &rsquo;translation&rsquo; process is the essence
+of note-taking. It integrates the newly-learned idea with your existing
+knowledge network. The benefit of linking your knowledge is more like compound
+interests instead of linear addition. On the other hand, copying text word by
+word doesn&rsquo;t automatically make you understand the ideas.
+</p>
+
+<p>
+Taking notes in meetings and conversations help us concentrate and avoid
+daydreaming, this is particularly useful in the age of working remotely with
+back-to-back Zoom calls.
+</p>
+
+<p>
+Notes crystallise our thoughts in the precise moment when they emerge. Any
+form of coming-back-later is a waste of time. Repetition doesn&rsquo;t guarantee
+better understanding of the ideas because <a href="https://en.wikipedia.org/wiki/Confirmation_bias#:~:text=Confirmation%20bias%20is%20the%20tendency,evidence%2Dbased%20decision%2Dmaking.">our memory is very selective</a>. The
+action of highlighting-for-later is the same as putting things on your
+back-burner. It&rsquo;s better to deal with them now or discard them completely.
+Wasting mental energy to manage more back-burners is counterproductive. Our
+short-term memory and focus are all limited, overloading them will only cause
+us stress.
+</p>
+
+<p>
+Taking notes empties our short-term memory. This means we can use our main
+focus to think about the order, the relationship and the clarity between the
+ideas we are trying to make sense of. Writing down thoughts doesn&rsquo;t mean we
+are going to forget about what we have learned. The action of linking the
+ideas strengthens our understanding. The idea of freeing out short-term
+memory is also used in David Allen&rsquo;s book <i>Getting Things Done</i>.
+</p>
+
+<p>
+However, I always felt I am not taking notes the right way, or perhaps I just
+have really bad memroy. There are times I couldn&rsquo;t remember much about the
+books I&rsquo;ve spent days reading about a couple of months ago. The volumes of
+notebooks on my bookshelf often felt foreign to me, as if they were from
+somebody else.
+</p>
+
+<p>
+It all changed when I learned about Zettlekasten.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org676c69c" class="outline-2">
+<h2 id="org676c69c">What is Zettelkasten</h2>
+<div class="outline-text-2" id="text-org676c69c">
+<p>
+Zettelkasten (German: &ldquo;slip-box&rdquo;) is a note taking method for knowledge
+management and writing. It is what made Niklas Luhmann, a self-made public
+servant to sociologist professor who wrote 58 books and over 400 papers
+during his lifetime - with more published based on his manuscripts after his
+death, a prolific scholar. Zettelkasten seems to have gained popularity in
+the past few years, especially with the popular not-taking application <a href="https://roamresearch.com/">Roam
+Research</a>.
+</p>
+
+<blockquote>
+<p>
+As a result of extensive work with this technique a kind of secondary memory
+will arise, an alter ego with who we can constantly communicate. It proves to
+be similar to our own memory in that it does not have a thoroughly
+constructed order of its entirety, not hierarchy, and most certainly no
+linear structure like a book. Just because of this, it gets its own life,
+independent of its author.
+</p>
+
+<p>
+&#x2014; Niklas Luhmann
+</p>
+</blockquote>
+
+<p>
+The idea of communicating with your second brain is very powerful. It&rsquo;s like
+you have a Google with all your own ideas and writings. I find it&rsquo;s
+particularly interesting as it resonates with my idea of &rsquo;searching over
+organising&rsquo;. I believe we should be able to have dialogues with our brain and
+notebooks to ask questions.
+</p>
+
+<p>
+The method itself is very simple to practice. You use small index cards for
+note taking. Each card (&ldquo;Zettel&rdquo; in German) has an ID, a set of contexts
+(tags) and references to other cards. All the cards are stored in a
+slip-box. You then create indexes with key terms of important notes as entry
+points for querying your knowledge (the second brain). Luhman also has a
+slip-box dedicated for bibliography.
+</p>
+
+<p>
+The <a href="https://www.youtube.com/watch?v=c5Tst3-zcWI&amp;ab_channel=Zettlr">Zettelkasten Manifesto</a> explains the concept very well.
+</p>
+</div>
+</section>
+
+<section id="outline-container-org15d8443" class="outline-2">
+<h2 id="org15d8443">Key Principles of Zettelkasten</h2>
+<div class="outline-text-2" id="text-org15d8443">
+<p>
+In order to truly realise the effectiveness of the Zettelkasten method, there
+are few key principles (or at least the ideas behind them) need to be
+followed religiously.
+</p>
+
+<ul class="org-ul">
+<li>Each card holds a single idea - an <b>atomic concept</b> that can be understood
+by itself.  This makes each card useful in more than one context and it
+increases the surface area for enquiry.</li>
+
+<li>Use specific and contextual tags, avoid categories. &rsquo;Finance&rsquo; or &rsquo;Holiday&rsquo;
+are not good tags in Zettelkasten. In what context would you want to find
+information about &rsquo;Finance&rsquo;? It&rsquo;s too wide. A better version would be
+&rsquo;Money Saving Tips&rsquo; or &rsquo;Places I Want to Visit in Africa&rsquo;. When you tag the
+notes, don&rsquo;t automatically link them to the most obvious and most commonly
+used tags. Think hard about in what contexts this note may be useful. This
+deliberate practice of linking is the essence of Zettelkasten. The existing
+keywords are warnings, they are not cues.</li>
+
+<li>Build the links among cards through references. The practice of
+deliberately building links helps you connect ideas. Building links from
+bottom-up means you have to constantly update your links as you gain new
+knowledge and insights.</li>
+</ul>
+</div>
+</section>
+
+<section id="outline-container-org556a11f" class="outline-2">
+<h2 id="org556a11f">How to Take Smart Notes</h2>
+<div class="outline-text-2" id="text-org556a11f">
+<p>
+Apart from reading articles from <a href="https://zettelkasten.de/">zettelkasten.de</a>, I&rsquo;ve also read the book <a href="https://www.amazon.co.uk/How-Take-Smart-Notes-Nonfiction-ebook/dp/B06WVYW33Y">How
+to Take Smart Notes</a> from Sönke Ahrens. There are plenty of resources on the
+Internet about Zettelkasten but none explains the idea as in depth as Ahrens&rsquo;
+book.
+</p>
+
+<p>
+The core idea of the book is that there are two parts in note-taking. The
+first one is to write a summary of the main ideas in your own words. The
+second part is to create links between the new ideas and the existing
+concepts in your slip-box. They are equally important.
+</p>
+
+<p>
+If you want to give the book a try, I recommend at least try Zettelkasten at
+the same time while reading the book. I learnt about slip-boxes on the
+Internet, bought the book and started to use the Zettelkasten method to read
+this very book about Zettelkasten. I kept improving my Zettelkasten note
+taking techniques as I went through the book. There were many aha moments
+which I probably would not be able to get from reading the book for the first
+time if I didn&rsquo;t practice this technique at all.
+</p>
+
+<p>
+The book categorised notes into a few types. Below is my own interpretation
+of how Zettels should be organised.
+</p>
+</div>
+</section>
+
+<section id="outline-container-orge812efc" class="outline-2">
+<h2 id="orge812efc">Five Types of Notes</h2>
+<div class="outline-text-2" id="text-orge812efc">
+<dl class="org-dl">
+<dt>Fleeting notes</dt><dd>Your scrawls on serviettes, brown bags, or coffee shop
+receipts. They are random ideas you jolted down while you were reading,
+waiting in the queue or talking with a friend. Make sure you process them
+within a day or two while the memory is still fresh. You can bin these
+after you&rsquo;ve turned them into permanent notes.</dd>
+</dl>
+<dl class="org-dl">
+<dt>Permanent notes</dt><dd>Notes that represent atomic ideas which can be understood
+in their own contexts. I occasionally create notes only to connect related
+ideas when they are too big to fit into one zettel. The title of the Zettel
+should be descriptive. The first sentence or paragraph should be the summary
+of the idea.</dd>
+
+<dt>Literature notes</dt><dd>Summarise the content of a book, publication or blog
+post and give the citation, in the format of &ldquo;on page X of Y, it says Z&rdquo;You
+can keep a separate bibliography slip-box with tools such as <a href="https://www.zotero.org/">Zetora</a> or
+<a href="https://github.com/jkitchin/org-ref">org-ref</a>.</dd>
+
+<dt>Index notes</dt><dd>Index notes are the entry points to the universe inside your
+slip-box. Each index should link as few notes as possible (Luhmann links
+maximum three). Index notes are not tables of contents which have links to
+everything in the slip-box. The key idea is to use the key links to discover
+more notes by traversing through the network.  If you use a digital
+Zettelkasten system this type of notes may not be necessary - back-links can
+be discovered by the software easily</dd>
+
+<dt>Project notes</dt><dd>Notes that serve as &rsquo;folders&rsquo; for specific projects. You
+can archive them or bin them once the projects are done. You draw ideas
+from your permanent notes but you don&rsquo;t change them for the projects - keep
+the modifications for the project specific context inside the project
+notes.</dd>
+</dl>
+</div>
+</section>
+
+<section id="outline-container-orgbde638f" class="outline-2">
+<h2 id="orgbde638f">Org-Roam</h2>
+<div class="outline-text-2" id="text-orgbde638f">
+<p>
+As a dedicated Emacser, the first thought in my mind was that I have to
+implement the idea with Emacs. Fortunately you have the wonderful
+<a href="https://github.com/org-roam/org-roam">Org-Roam</a>. It&rsquo;s straightforward to <a href="https://blog.jethro.dev/posts/how_to_take_smart_notes_org/">get started</a>.
+</p>
+
+
+<p>
+This article itself is a result of my Zettelkasten with Org-Roam. This wonderful
+<a href="https://www.youtube.com/watch?v=RvWic15iXjk&amp;ab_channel=NatEliason">video</a> taught me how to outline an article with Zettels in 20 minutes.
+</p>
+</div>
+</section>
+</main>
+<footer id="postamble" class="status">
+<div class='footer'>
+    <p>Copyright © 2011-2020 Liwen Knight-Zhang</p>
+    <p>Last updated on Sep 08, 2020</p>
+    <p>Published with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3.8) <i class='icon-emo-thumbsup'></i>
+</div>
+</footer>
+</body>
+</html>

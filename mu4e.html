@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- Jun 30, 2020 -->
+<!-- Sep 08, 2020 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Use mbsync &amp; mu4e for emails in Emacs</title>
@@ -236,7 +236,7 @@ Tagging has become a key part of many people&rsquo;s workflow. Being able to tag
 single email with multiple tags allow you to add custom metadata to emails
 for easy filtering. However, custom tags are not part of the IMAP
 standards. Different email providers and email clients implemented tagging
-differently over the years. Many tools map tags with folders (Maildir
+differently over the years. Many tools map tags to folders (Maildir
 mailboxes). This causes another potential issue - message
 duplication. E.g. if a message is tagged with &rsquo;Family&rsquo;, &rsquo;Holiday&rsquo; and
 &rsquo;Finance&rsquo; in Gmail, it will be synchronised into <code>/Family</code>, <code>/Holiday</code> and
@@ -388,6 +388,7 @@ CertificateFile /usr/local/etc/openssl/cert.pem
 MaildirStore outlook-local
 Flatten .
 Path ~/Mail/example@hotmail.com/
+Inbox ~/Mail/liwen.zhang@hotmail.com/Inbox
 
 IMAPStore outlook-remote
 Account outlook
@@ -422,29 +423,7 @@ Let&rsquo;s try our configuration:
 You should see something like this:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">C: 6/7  B: 47/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +3/3 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 48/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +29/29 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 49/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +43/43 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 50/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +43/43 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 51/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +49/49 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 52/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 53/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 54/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 55/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 56/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 6/7  B: 57/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
-Maildir notice: no UIDVALIDITY, creating new.
-C: 7/7  B: 58/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +92/92 *0/0 #0/0</span>
+<pre class="src src-shell">C: 7/7  B: 58/58  M: +0/0 *0/0 <span class="org-comment-delimiter">#</span><span class="org-comment">0/0  S: +0/0 *0/0 #0/0</span>
 </pre>
 </div>
 </div>
@@ -651,8 +630,8 @@ Finally I&rsquo;ve conquered <a href="#org57c3cd6">8</a> and <a href="#orgce11a2
 <footer id="postamble" class="status">
 <div class='footer'>
     <p>Copyright © 2011-2020 Liwen Knight-Zhang</p>
-    <p>Last updated on Jun 30, 2020</p>
-    <p>Published with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3.7) <i class='icon-emo-thumbsup'></i>
+    <p>Last updated on Jul 19, 2020</p>
+    <p>Published with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3.8) <i class='icon-emo-thumbsup'></i>
 </div>
 </footer>
 </body>

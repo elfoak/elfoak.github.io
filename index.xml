@@ -14,9 +14,9 @@
   <link>http://example.com/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Tue, 30 Jun 2020 17:21:11 +0100</pubDate>
-  <lastBuildDate>Tue, 30 Jun 2020 17:21:11 +0100</lastBuildDate>
-  <generator>Emacs 26.3 Org-mode 9.3.7</generator>
+  <pubDate>Tue, 08 Sep 2020 07:21:31 +0100</pubDate>
+  <lastBuildDate>Tue, 08 Sep 2020 07:21:31 +0100</lastBuildDate>
+  <generator>Emacs 27.1 Org-mode 9.3.8</generator>
   <webMaster>liwenkz@Liwens-MBP (Liwen Knight-Zhang)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
@@ -25,6 +25,10 @@
   </image>
 
   <ul class="org-ul">
+    <li><p>
+      <a href="zettelkasten-n-org-roam.html">Zettelkasten &amp; Org-Roam</a>
+    </p>
+    <p class='pubdate'>Jul 24, 2020</p></li>
     <li><p>
       <a href="mu4e.html">Use mbsync &amp; mu4e for emails in Emacs</a>
     </p>
